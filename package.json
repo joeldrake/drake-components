@@ -1,0 +1,23 @@
+{
+  "name": "drake-components",
+  "version": "0.1.0",
+  "description": "Drake Components (dc-*) — vanilla web components, no build required",
+  "type": "module",
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [
+    "web-components",
+    "custom-elements",
+    "storybook"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "storybook": "^10.5.8",
+    "@storybook/web-components-vite": "^10.5.8",
+    "@storybook/addon-a11y": "^10.5.8",
+    "@storybook/addon-docs": "^10.5.8"
+  }
+}
