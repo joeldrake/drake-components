@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "dc-button",
+      "description": "A button element with variant, size and disabled states.\n---\n\n\n### **Slots:**\n - _default_ - Button label content.\n\n### **CSS Properties:**\n - **--dc-button-bg** - Background color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-border** - Border color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-color** - Text color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-bg-hover** - Background color on hover, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-border-hover** - Border color on hover, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-primary-bg** - Background color for the `primary` variant. _(default: #2563eb)_\n- **--dc-button-primary-border** - Border color for the `primary` variant. _(default: #2563eb)_\n- **--dc-button-primary-color** - Text color for the `primary` variant. _(default: #fff)_\n- **--dc-button-primary-bg-hover** - Background color for the `primary` variant on hover. _(default: #1d4ed8)_\n- **--dc-button-primary-border-hover** - Border color for the `primary` variant on hover. _(default: #1d4ed8)_\n- **--dc-button-secondary-bg** - Background color for the `secondary` variant. _(default: #fff)_\n- **--dc-button-secondary-border** - Border color for the `secondary` variant. _(default: #d1d5db)_\n- **--dc-button-secondary-color** - Text color for the `secondary` variant. _(default: #111827)_\n- **--dc-button-secondary-bg-hover** - Background color for the `secondary` variant on hover. _(default: #f3f4f6)_\n- **--dc-button-secondary-border-hover** - Border color for the `secondary` variant on hover. _(default: #d1d5db)_\n- **--dc-button-danger-bg** - Background color for the `danger` variant. _(default: #dc2626)_\n- **--dc-button-danger-border** - Border color for the `danger` variant. _(default: #dc2626)_\n- **--dc-button-danger-color** - Text color for the `danger` variant. _(default: #fff)_\n- **--dc-button-danger-bg-hover** - Background color for the `danger` variant on hover. _(default: #b91c1c)_\n- **--dc-button-danger-border-hover** - Border color for the `danger` variant on hover. _(default: #b91c1c)_",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "Visual style of the button.",
+          "values": [
+            { "name": "primary" },
+            { "name": "secondary" },
+            { "name": "danger" }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "Size of the button.",
+          "values": [{ "name": "sm" }, { "name": "md" }, { "name": "lg" }]
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the button and prevents interaction.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "dc-card",
+      "description": "A container with optional header and footer sections that auto-hide when empty.\n---\n\n\n### **Slots:**\n - _default_ - Main card content.\n- **header** - Header content, shown above the main content. Hidden when empty.\n- **footer** - Footer content, shown below the main content, right-aligned. Hidden when empty.\n\n### **CSS Properties:**\n - **--dc-card-border-color** - Border color for the card and its header/footer dividers. _(default: #e5e7eb)_\n- **--dc-card-bg** - Background color of the card. _(default: #fff)_",
+      "attributes": [],
+      "references": []
+    },
+    {
+      "name": "dc-dialog",
+      "description": "A modal dialog built on the native `<dialog>` element.\n---\n\n\n### **Events:**\n - **dc-close** - Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.\n\n### **Methods:**\n - **show()** - Opens the dialog modally.\n- **close()** - Closes the dialog.\n\n### **Slots:**\n - _default_ - Main dialog content.\n- **footer** - Footer content, right-aligned below the main content. Hidden when empty.\n\n### **CSS Properties:**\n - **--dc-dialog-bg** - Background color of the dialog. _(default: #fff)_\n- **--dc-dialog-backdrop** - Background color of the `::backdrop`. _(default: rgb(0 0 0 / 0.5))_\n- **--dc-dialog-close-color** - Color of the close button icon. _(default: #6b7280)_\n- **--dc-dialog-close-bg-hover** - Background color of the close button on hover. _(default: #f3f4f6)_\n- **--dc-dialog-close-color-hover** - Color of the close button icon on hover. _(default: #111827)_",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.",
+          "values": []
+        }
+      ],
+      "references": []
+    }
+  ]
+}

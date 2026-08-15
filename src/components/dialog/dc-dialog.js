@@ -60,6 +60,24 @@ styles.replaceSync(/* css */ `
   }
 `);
 
+/**
+ * A modal dialog built on the native `<dialog>` element.
+ *
+ * @element dc-dialog
+ *
+ * @attr {boolean} [open=false] - Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.
+ *
+ * @slot - Main dialog content.
+ * @slot footer - Footer content, right-aligned below the main content. Hidden when empty.
+ *
+ * @fires {CustomEvent} dc-close - Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.
+ *
+ * @cssprop [--dc-dialog-bg=#fff] - Background color of the dialog.
+ * @cssprop [--dc-dialog-backdrop=rgb(0 0 0 / 0.5)] - Background color of the `::backdrop`.
+ * @cssprop [--dc-dialog-close-color=#6b7280] - Color of the close button icon.
+ * @cssprop [--dc-dialog-close-bg-hover=#f3f4f6] - Background color of the close button on hover.
+ * @cssprop [--dc-dialog-close-color-hover=#111827] - Color of the close button icon on hover.
+ */
 export class DcDialog extends HTMLElement {
   static get observedAttributes() {
     return ["open"];
@@ -116,18 +134,22 @@ export class DcDialog extends HTMLElement {
     this.#sync();
   }
 
+  /** @type {boolean} */
   get open() {
     return this.hasAttribute("open");
   }
 
+  /** @param {boolean} value */
   set open(value) {
     this.toggleAttribute("open", Boolean(value));
   }
 
+  /** Opens the dialog modally. */
   show() {
     this.setAttribute("open", "");
   }
 
+  /** Closes the dialog. */
   close() {
     this.removeAttribute("open");
   }

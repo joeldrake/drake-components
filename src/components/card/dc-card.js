@@ -46,6 +46,18 @@ styles.replaceSync(/* css */ `
   }
 `);
 
+/**
+ * A container with optional header and footer sections that auto-hide when empty.
+ *
+ * @element dc-card
+ *
+ * @slot - Main card content.
+ * @slot header - Header content, shown above the main content. Hidden when empty.
+ * @slot footer - Footer content, shown below the main content, right-aligned. Hidden when empty.
+ *
+ * @cssprop [--dc-card-border-color=#e5e7eb] - Border color for the card and its header/footer dividers.
+ * @cssprop [--dc-card-bg=#fff] - Background color of the card.
+ */
 export class DcCard extends HTMLElement {
   constructor() {
     super();

@@ -1,0 +1,463 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button/dc-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A button element with variant, size and disabled states.",
+          "name": "DcButton",
+          "cssProperties": [
+            {
+              "description": "Background color, overrides the variant default for all variants.",
+              "name": "--dc-button-bg"
+            },
+            {
+              "description": "Border color, overrides the variant default for all variants.",
+              "name": "--dc-button-border"
+            },
+            {
+              "description": "Text color, overrides the variant default for all variants.",
+              "name": "--dc-button-color"
+            },
+            {
+              "description": "Background color on hover, overrides the variant default for all variants.",
+              "name": "--dc-button-bg-hover"
+            },
+            {
+              "description": "Border color on hover, overrides the variant default for all variants.",
+              "name": "--dc-button-border-hover"
+            },
+            {
+              "description": "Background color for the `primary` variant.",
+              "name": "--dc-button-primary-bg",
+              "default": "#2563eb"
+            },
+            {
+              "description": "Border color for the `primary` variant.",
+              "name": "--dc-button-primary-border",
+              "default": "#2563eb"
+            },
+            {
+              "description": "Text color for the `primary` variant.",
+              "name": "--dc-button-primary-color",
+              "default": "#fff"
+            },
+            {
+              "description": "Background color for the `primary` variant on hover.",
+              "name": "--dc-button-primary-bg-hover",
+              "default": "#1d4ed8"
+            },
+            {
+              "description": "Border color for the `primary` variant on hover.",
+              "name": "--dc-button-primary-border-hover",
+              "default": "#1d4ed8"
+            },
+            {
+              "description": "Background color for the `secondary` variant.",
+              "name": "--dc-button-secondary-bg",
+              "default": "#fff"
+            },
+            {
+              "description": "Border color for the `secondary` variant.",
+              "name": "--dc-button-secondary-border",
+              "default": "#d1d5db"
+            },
+            {
+              "description": "Text color for the `secondary` variant.",
+              "name": "--dc-button-secondary-color",
+              "default": "#111827"
+            },
+            {
+              "description": "Background color for the `secondary` variant on hover.",
+              "name": "--dc-button-secondary-bg-hover",
+              "default": "#f3f4f6"
+            },
+            {
+              "description": "Border color for the `secondary` variant on hover.",
+              "name": "--dc-button-secondary-border-hover",
+              "default": "#d1d5db"
+            },
+            {
+              "description": "Background color for the `danger` variant.",
+              "name": "--dc-button-danger-bg",
+              "default": "#dc2626"
+            },
+            {
+              "description": "Border color for the `danger` variant.",
+              "name": "--dc-button-danger-border",
+              "default": "#dc2626"
+            },
+            {
+              "description": "Text color for the `danger` variant.",
+              "name": "--dc-button-danger-color",
+              "default": "#fff"
+            },
+            {
+              "description": "Background color for the `danger` variant on hover.",
+              "name": "--dc-button-danger-bg-hover",
+              "default": "#b91c1c"
+            },
+            {
+              "description": "Border color for the `danger` variant on hover.",
+              "name": "--dc-button-danger-border-hover",
+              "default": "#b91c1c"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Button label content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#button",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "DcButtonVariant"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "DcButtonVariant"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "DcButtonSize"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "DcButtonSize"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#render",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <button> <slot></slot> </button> `"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "variant",
+              "type": {
+                "text": "\"primary\" | \"secondary\" | \"danger\""
+              },
+              "description": "Visual style of the button.",
+              "default": "\"primary\""
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"sm\" | \"md\" | \"lg\""
+              },
+              "description": "Size of the button.",
+              "default": "\"md\""
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the button and prevents interaction.",
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcButton",
+          "declaration": {
+            "name": "DcButton",
+            "module": "src/components/button/dc-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-button",
+          "declaration": {
+            "name": "DcButton",
+            "module": "src/components/button/dc-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/card/dc-card.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A container with optional header and footer sections that auto-hide when empty.",
+          "name": "DcCard",
+          "cssProperties": [
+            {
+              "description": "Border color for the card and its header/footer dividers.",
+              "name": "--dc-card-border-color",
+              "default": "#e5e7eb"
+            },
+            {
+              "description": "Background color of the card.",
+              "name": "--dc-card-bg",
+              "default": "#fff"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Main card content.",
+              "name": ""
+            },
+            {
+              "description": "Header content, shown above the main content. Hidden when empty.",
+              "name": "header"
+            },
+            {
+              "description": "Footer content, shown below the main content, right-aligned. Hidden when empty.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <div class=\"card\"> <div class=\"header is-empty\"> <slot name=\"header\"></slot> </div> <div class=\"body\"> <slot></slot> </div> <div class=\"footer is-empty\"> <slot name=\"footer\"></slot> </div> </div> `"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcCard",
+          "declaration": {
+            "name": "DcCard",
+            "module": "src/components/card/dc-card.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-card",
+          "declaration": {
+            "name": "DcCard",
+            "module": "src/components/card/dc-card.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dialog/dc-dialog.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A modal dialog built on the native `<dialog>` element.",
+          "name": "DcDialog",
+          "cssProperties": [
+            {
+              "description": "Background color of the dialog.",
+              "name": "--dc-dialog-bg",
+              "default": "#fff"
+            },
+            {
+              "description": "Background color of the `::backdrop`.",
+              "name": "--dc-dialog-backdrop",
+              "default": "rgb(0 0 0 / 0.5)"
+            },
+            {
+              "description": "Color of the close button icon.",
+              "name": "--dc-dialog-close-color",
+              "default": "#6b7280"
+            },
+            {
+              "description": "Background color of the close button on hover.",
+              "name": "--dc-dialog-close-bg-hover",
+              "default": "#f3f4f6"
+            },
+            {
+              "description": "Color of the close button icon on hover.",
+              "name": "--dc-dialog-close-color-hover",
+              "default": "#111827"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Main dialog content.",
+              "name": ""
+            },
+            {
+              "description": "Footer content, right-aligned below the main content. Hidden when empty.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#dialog",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#syncingAttribute",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "description": "Opens the dialog modally."
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "description": "Closes the dialog."
+            },
+            {
+              "kind": "method",
+              "name": "#sync",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <dialog role=\"dialog\" aria-modal=\"true\" > <div class=\"content\"> <button type=\"button\" class=\"close\" aria-label=\"Close\">×</button> <slot></slot> <div class=\"footer\"> <slot name=\"footer\"></slot> </div> </div> </dialog> `"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.",
+              "name": "dc-close"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.",
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-dialog",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcDialog",
+          "declaration": {
+            "name": "DcDialog",
+            "module": "src/components/dialog/dc-dialog.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-dialog",
+          "declaration": {
+            "name": "DcDialog",
+            "module": "src/components/dialog/dc-dialog.js"
+          }
+        }
+      ]
+    }
+  ]
+}

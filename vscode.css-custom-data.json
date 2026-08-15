@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-css-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "properties": [
+    {
+      "name": "--dc-button-bg",
+      "description": "Background color, overrides the variant default for all variants.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-border",
+      "description": "Border color, overrides the variant default for all variants.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-color",
+      "description": "Text color, overrides the variant default for all variants.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-bg-hover",
+      "description": "Background color on hover, overrides the variant default for all variants.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-border-hover",
+      "description": "Border color on hover, overrides the variant default for all variants.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-primary-bg",
+      "description": "Background color for the `primary` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-primary-border",
+      "description": "Border color for the `primary` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-primary-color",
+      "description": "Text color for the `primary` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-primary-bg-hover",
+      "description": "Background color for the `primary` variant on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-primary-border-hover",
+      "description": "Border color for the `primary` variant on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-secondary-bg",
+      "description": "Background color for the `secondary` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-secondary-border",
+      "description": "Border color for the `secondary` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-secondary-color",
+      "description": "Text color for the `secondary` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-secondary-bg-hover",
+      "description": "Background color for the `secondary` variant on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-secondary-border-hover",
+      "description": "Border color for the `secondary` variant on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-danger-bg",
+      "description": "Background color for the `danger` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-danger-border",
+      "description": "Border color for the `danger` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-danger-color",
+      "description": "Text color for the `danger` variant.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-danger-bg-hover",
+      "description": "Background color for the `danger` variant on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-danger-border-hover",
+      "description": "Border color for the `danger` variant on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-card-border-color",
+      "description": "Border color for the card and its header/footer dividers.",
+      "values": []
+    },
+    {
+      "name": "--dc-card-bg",
+      "description": "Background color of the card.",
+      "values": []
+    },
+    {
+      "name": "--dc-dialog-bg",
+      "description": "Background color of the dialog.",
+      "values": []
+    },
+    {
+      "name": "--dc-dialog-backdrop",
+      "description": "Background color of the `::backdrop`.",
+      "values": []
+    },
+    {
+      "name": "--dc-dialog-close-color",
+      "description": "Color of the close button icon.",
+      "values": []
+    },
+    {
+      "name": "--dc-dialog-close-bg-hover",
+      "description": "Background color of the close button on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-dialog-close-color-hover",
+      "description": "Color of the close button icon on hover.",
+      "values": []
+    }
+  ],
+  "pseudoElements": []
+}
