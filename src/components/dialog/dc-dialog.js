@@ -17,6 +17,7 @@ styles.replaceSync(/* css */ `
       0 8px 10px -6px rgb(0 0 0 / 0.1);
     min-width: 320px;
     max-width: min(560px, calc(100vw - 2rem));
+    view-transition-name: dc-dialog;
   }
 
   dialog::backdrop {
@@ -60,6 +61,45 @@ styles.replaceSync(/* css */ `
   }
 `);
 
+// ::view-transition-* pseudo-elements are anchored to the document root, so
+// they can't be reached from a shadow-root stylesheet - this has to be global.
+function ensureViewTransitionStyles() {
+  if (document.getElementById("dc-dialog-view-transition-styles")) return;
+
+  const style = document.createElement("style");
+  style.id = "dc-dialog-view-transition-styles";
+  style.textContent = /* css */ `
+    ::view-transition-old(dc-dialog),
+    ::view-transition-new(dc-dialog) {
+      animation-duration: 0.18s;
+      animation-timing-function: ease;
+    }
+
+    ::view-transition-old(dc-dialog) {
+      animation-name: dc-dialog-view-transition-out;
+    }
+
+    ::view-transition-new(dc-dialog) {
+      animation-name: dc-dialog-view-transition-in;
+    }
+
+    @keyframes dc-dialog-view-transition-in {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+
+    @keyframes dc-dialog-view-transition-out {
+      to {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+  `;
+  document.head.append(style);
+}
+
 /**
  * A modal dialog built on the native `<dialog>` element.
  *
@@ -88,6 +128,8 @@ export class DcDialog extends HTMLElement {
 
   constructor() {
     super();
+    ensureViewTransitionStyles();
+
     const shadow = this.attachShadow({ mode: "open" });
     shadow.adoptedStyleSheets = [styles];
 
@@ -124,6 +166,14 @@ export class DcDialog extends HTMLElement {
     this.#dialog.addEventListener("click", (event) => {
       if (event.target === this.#dialog) this.close();
     });
+
+    // Escape closes the dialog natively before any JS runs, which would skip
+    // the view transition - take over the close so it animates too.
+    this.#dialog.addEventListener("cancel", (event) => {
+      if (!DcDialog.#canAnimate()) return;
+      event.preventDefault();
+      this.close();
+    });
   }
 
   connectedCallback() {
@@ -156,14 +206,30 @@ export class DcDialog extends HTMLElement {
 
   #sync() {
     if (!this.#dialog.isConnected && !this.isConnected) return;
+    if (this.open === this.#dialog.open) return;
 
-    this.#syncingAttribute = true;
-    if (this.open && !this.#dialog.open) {
-      this.#dialog.showModal();
-    } else if (!this.open && this.#dialog.open) {
-      this.#dialog.close();
+    const applyState = () => {
+      this.#syncingAttribute = true;
+      if (this.open) {
+        this.#dialog.showModal();
+      } else {
+        this.#dialog.close();
+      }
+      this.#syncingAttribute = false;
+    };
+
+    if (DcDialog.#canAnimate()) {
+      document.startViewTransition(applyState);
+    } else {
+      applyState();
     }
-    this.#syncingAttribute = false;
+  }
+
+  static #canAnimate() {
+    return (
+      typeof document.startViewTransition === "function" &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
   }
 }
 
