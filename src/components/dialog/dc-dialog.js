@@ -1,10 +1,17 @@
 const styles = new CSSStyleSheet();
 styles.replaceSync(/* css */ `
   dialog {
-    font-family: inherit;
+    font-family:
+      "Inter",
+      -apple-system,
+      "Helvetica Neue",
+      Helvetica,
+      Arial,
+      sans-serif;
     padding: 0;
     border: none;
     border-radius: 10px;
+    background: var(--dc-dialog-bg, #fff);
     box-shadow:
       0 20px 25px -5px rgb(0 0 0 / 0.1),
       0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -13,7 +20,7 @@ styles.replaceSync(/* css */ `
   }
 
   dialog::backdrop {
-    background: rgb(0 0 0 / 0.5);
+    background: var(--dc-dialog-backdrop, rgb(0 0 0 / 0.5));
   }
 
   .content {
@@ -30,15 +37,15 @@ styles.replaceSync(/* css */ `
     border: none;
     border-radius: 6px;
     background: transparent;
-    color: #6b7280;
+    color: var(--dc-dialog-close-color, #6b7280);
     font-size: 1.125rem;
     line-height: 1;
     cursor: pointer;
   }
 
   .close:hover {
-    background: #f3f4f6;
-    color: #111827;
+    background: var(--dc-dialog-close-bg-hover, #f3f4f6);
+    color: var(--dc-dialog-close-color-hover, #111827);
   }
 
   .footer {

@@ -13,7 +13,7 @@ styles.replaceSync(/* css */ `
       Arial,
       sans-serif;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
     border-radius: 9999px;
     border: 1px solid transparent;
@@ -43,32 +43,60 @@ styles.replaceSync(/* css */ `
 
   /* variants */
   button.primary {
-    background: #2563eb;
-    border-color: #2563eb;
-    color: #fff;
+    background: var(--dc-button-bg, var(--dc-button-primary-bg, #2563eb));
+    border-color: var(
+      --dc-button-border,
+      var(--dc-button-primary-border, #2563eb)
+    );
+    color: var(--dc-button-color, var(--dc-button-primary-color, #fff));
   }
   button.primary:not(:disabled):hover {
-    background: #1d4ed8;
-    border-color: #1d4ed8;
+    background: var(
+      --dc-button-bg-hover,
+      var(--dc-button-primary-bg-hover, #1d4ed8)
+    );
+    border-color: var(
+      --dc-button-border-hover,
+      var(--dc-button-primary-border-hover, #1d4ed8)
+    );
   }
 
   button.secondary {
-    background: #fff;
-    border-color: #d1d5db;
-    color: #111827;
+    background: var(--dc-button-bg, var(--dc-button-secondary-bg, #fff));
+    border-color: var(
+      --dc-button-border,
+      var(--dc-button-secondary-border, #d1d5db)
+    );
+    color: var(--dc-button-color, var(--dc-button-secondary-color, #111827));
   }
   button.secondary:not(:disabled):hover {
-    background: #f3f4f6;
+    background: var(
+      --dc-button-bg-hover,
+      var(--dc-button-secondary-bg-hover, #f3f4f6)
+    );
+    border-color: var(
+      --dc-button-border-hover,
+      var(--dc-button-secondary-border-hover, #d1d5db)
+    );
   }
 
   button.danger {
-    background: #dc2626;
-    border-color: #dc2626;
-    color: #fff;
+    background: var(--dc-button-bg, var(--dc-button-danger-bg, #dc2626));
+    border-color: var(
+      --dc-button-border,
+      var(--dc-button-danger-border, #dc2626)
+    );
+    color: var(--dc-button-color, var(--dc-button-danger-color, #fff));
   }
   button.danger:not(:disabled):hover {
-    background: #b91c1c;
-    border-color: #b91c1c;
+    background: var(
+      --dc-button-bg-hover,
+      var(--dc-button-danger-bg-hover, #b91c1c)
+    );
+    border-color: var(
+      --dc-button-border-hover,
+      var(--dc-button-danger-border-hover, #b91c1c)
+    );
   }
 `);
 

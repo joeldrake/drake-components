@@ -20,8 +20,8 @@ export const WithHeaderAndFooter = {
       <span slot="header">Card title</span>
       This card has both a header and a footer with actions.
       <div slot="footer">
-        <button type="button">Cancel</button>
-        <button type="button">Save</button>
+        <dc-button variant="secondary">Cancel</dc-button>
+        <dc-button variant="primary">Save</dc-button>
       </div>
     </dc-card>
   `,
