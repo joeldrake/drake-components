@@ -93,7 +93,9 @@ export class DcDialog extends HTMLElement {
     this.#dialog.addEventListener("close", () => {
       if (this.#syncingAttribute) return;
       this.removeAttribute("open");
-      this.dispatchEvent(new CustomEvent("dc-close", { bubbles: true, composed: true }));
+      this.dispatchEvent(
+        new CustomEvent("dc-close", { bubbles: true, composed: true }),
+      );
     });
 
     // Clicking the ::backdrop dispatches the click at the <dialog> element itself.

@@ -1,5 +1,5 @@
 const styles = new CSSStyleSheet();
-styles.replaceSync(`
+styles.replaceSync(/* css */ `
   :host {
     display: inline-block;
   }
@@ -12,7 +12,10 @@ styles.replaceSync(`
     border-radius: 6px;
     border: 1px solid transparent;
     cursor: pointer;
-    transition: background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      opacity 0.15s ease;
   }
 
   button:disabled {
@@ -21,9 +24,17 @@ styles.replaceSync(`
   }
 
   /* sizes */
-  button.sm { padding: 0.375rem 0.75rem; font-size: 0.8125rem; }
-  button.md { padding: 0.5rem 1rem; }
-  button.lg { padding: 0.75rem 1.5rem; font-size: 1rem; }
+  button.sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+  button.md {
+    padding: 0.5rem 1rem;
+  }
+  button.lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
 
   /* variants */
   button.primary {
@@ -31,21 +42,29 @@ styles.replaceSync(`
     border-color: #2563eb;
     color: #fff;
   }
-  button.primary:not(:disabled):hover { background: #1d4ed8; border-color: #1d4ed8; }
+  button.primary:not(:disabled):hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+  }
 
   button.secondary {
     background: #fff;
     border-color: #d1d5db;
     color: #111827;
   }
-  button.secondary:not(:disabled):hover { background: #f3f4f6; }
+  button.secondary:not(:disabled):hover {
+    background: #f3f4f6;
+  }
 
   button.danger {
     background: #dc2626;
     border-color: #dc2626;
     color: #fff;
   }
-  button.danger:not(:disabled):hover { background: #b91c1c; border-color: #b91c1c; }
+  button.danger:not(:disabled):hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+  }
 `);
 
 const VARIANTS = ["primary", "secondary", "danger"];
@@ -63,9 +82,12 @@ export class DcButton extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
     shadow.adoptedStyleSheets = [styles];
 
-    this.#button = document.createElement("button");
-    this.#button.append(document.createElement("slot"));
-    shadow.append(this.#button);
+    shadow.innerHTML = /* html */ `
+      <button>
+        <slot></slot>
+      </button>
+    `;
+    this.#button = shadow.querySelector("button");
   }
 
   connectedCallback() {
