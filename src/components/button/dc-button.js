@@ -5,11 +5,17 @@ styles.replaceSync(/* css */ `
   }
 
   button {
-    font-family: inherit;
-    font-size: 0.9375rem;
+    font-family:
+      "Inter",
+      -apple-system,
+      "Helvetica Neue",
+      Helvetica,
+      Arial,
+      sans-serif;
+    font-size: 1rem;
     font-weight: 600;
     line-height: 1;
-    border-radius: 6px;
+    border-radius: 9999px;
     border: 1px solid transparent;
     cursor: pointer;
     transition:
@@ -33,7 +39,6 @@ styles.replaceSync(/* css */ `
   }
   button.lg {
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
   }
 
   /* variants */

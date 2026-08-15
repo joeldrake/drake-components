@@ -1,3 +1,4 @@
+import { html } from "lit";
 import "./dc-button.js";
 
 export default {
@@ -21,8 +22,12 @@ export default {
     disabled: false,
     label: "Click me",
   },
-  render: (args) => `
-    <dc-button variant="${args.variant}" size="${args.size}" ${args.disabled ? "disabled" : ""}>
+  render: (args) => html`
+    <dc-button
+      variant="${args.variant}"
+      size="${args.size}"
+      ?disabled="${args.disabled}"
+    >
       ${args.label}
     </dc-button>
   `,
@@ -45,8 +50,10 @@ export const Disabled = {
 };
 
 export const Sizes = {
-  render: (args) => `
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
+  render: (args) => html`
+    <div
+      style="display: flex; align-items: center; gap: 0.75rem;"
+    >
       <dc-button variant="${args.variant}" size="sm">Small</dc-button>
       <dc-button variant="${args.variant}" size="md">Medium</dc-button>
       <dc-button variant="${args.variant}" size="lg">Large</dc-button>

@@ -1,11 +1,13 @@
 const styles = new CSSStyleSheet();
-styles.replaceSync(`
+styles.replaceSync(/* css */ `
   dialog {
     font-family: inherit;
     padding: 0;
     border: none;
     border-radius: 10px;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 8px 10px -6px rgb(0 0 0 / 0.1);
     min-width: 320px;
     max-width: min(560px, calc(100vw - 2rem));
   }
@@ -64,30 +66,25 @@ export class DcDialog extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
     shadow.adoptedStyleSheets = [styles];
 
-    this.#dialog = document.createElement("dialog");
-    this.#dialog.setAttribute("role", "dialog");
-    this.#dialog.setAttribute("aria-modal", "true");
+    shadow.innerHTML = /* html */ `
+      <dialog
+        role="dialog"
+        aria-modal="true"
+      >
+        <div class="content">
+          <button type="button" class="close" aria-label="Close">×</button>
+          <slot></slot>
+          <div class="footer">
+            <slot name="footer"></slot>
+          </div>
+        </div>
+      </dialog>
+    `;
 
-    const content = document.createElement("div");
-    content.className = "content";
-
-    const closeButton = document.createElement("button");
-    closeButton.type = "button";
-    closeButton.className = "close";
-    closeButton.setAttribute("aria-label", "Close");
-    closeButton.textContent = "×";
-    closeButton.addEventListener("click", () => this.close());
-
-    const body = document.createElement("slot");
-
-    const footer = document.createElement("div");
-    footer.className = "footer";
-    footer.append(document.createElement("slot"));
-    footer.lastElementChild.name = "footer";
-
-    content.append(closeButton, body, footer);
-    this.#dialog.append(content);
-    shadow.append(this.#dialog);
+    this.#dialog = shadow.querySelector("dialog");
+    shadow
+      .querySelector(".close")
+      .addEventListener("click", () => this.close());
 
     // Native <dialog> fires "close" both on Escape and on our own close() call.
     this.#dialog.addEventListener("close", () => {

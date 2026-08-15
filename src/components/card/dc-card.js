@@ -1,5 +1,5 @@
 const styles = new CSSStyleSheet();
-styles.replaceSync(`
+styles.replaceSync(/* css */ `
   :host {
     display: block;
   }
@@ -44,27 +44,24 @@ export class DcCard extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
     shadow.adoptedStyleSheets = [styles];
 
-    const card = document.createElement("div");
-    card.className = "card";
+    shadow.innerHTML = /* html */ `
+      <div class="card">
+        <div class="header is-empty">
+          <slot name="header"></slot>
+        </div>
+        <div class="body">
+          <slot></slot>
+        </div>
+        <div class="footer is-empty">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+    `;
 
-    const header = document.createElement("div");
-    header.className = "header is-empty";
-    const headerSlot = document.createElement("slot");
-    headerSlot.name = "header";
-    header.append(headerSlot);
-
-    const body = document.createElement("div");
-    body.className = "body";
-    body.append(document.createElement("slot"));
-
-    const footer = document.createElement("div");
-    footer.className = "footer is-empty";
-    const footerSlot = document.createElement("slot");
-    footerSlot.name = "footer";
-    footer.append(footerSlot);
-
-    card.append(header, body, footer);
-    shadow.append(card);
+    const header = shadow.querySelector(".header");
+    const headerSlot = header.querySelector("slot");
+    const footer = shadow.querySelector(".footer");
+    const footerSlot = footer.querySelector("slot");
 
     const toggleEmpty = (container, slot) => () => {
       container.classList.toggle("is-empty", slot.assignedNodes().length === 0);
