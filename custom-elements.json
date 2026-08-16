@@ -32,6 +32,10 @@
               "name": "--dc-button-border-hover"
             },
             {
+              "description": "Focus ring color, overrides the variant default for all variants.",
+              "name": "--dc-button-focus-ring"
+            },
+            {
               "description": "Background color for the `primary` variant.",
               "name": "--dc-button-primary-bg",
               "default": "#2563eb"
@@ -54,6 +58,11 @@
             {
               "description": "Border color for the `primary` variant on hover.",
               "name": "--dc-button-primary-border-hover",
+              "default": "#1d4ed8"
+            },
+            {
+              "description": "Focus ring color for the `primary` variant.",
+              "name": "--dc-button-primary-focus-ring",
               "default": "#1d4ed8"
             },
             {
@@ -82,6 +91,11 @@
               "default": "#d1d5db"
             },
             {
+              "description": "Focus ring color for the `secondary` variant.",
+              "name": "--dc-button-secondary-focus-ring",
+              "default": "#6b7280"
+            },
+            {
               "description": "Background color for the `danger` variant.",
               "name": "--dc-button-danger-bg",
               "default": "#dc2626"
@@ -104,6 +118,11 @@
             {
               "description": "Border color for the `danger` variant on hover.",
               "name": "--dc-button-danger-border-hover",
+              "default": "#b91c1c"
+            },
+            {
+              "description": "Focus ring color for the `danger` variant.",
+              "name": "--dc-button-danger-focus-ring",
               "default": "#b91c1c"
             }
           ],
@@ -175,7 +194,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[styles]"
+              "default": "[sharedStyles, styles]"
             },
             {
               "kind": "field",
@@ -276,7 +295,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[styles]"
+              "default": "[sharedStyles, styles]"
             },
             {
               "kind": "field",
@@ -328,21 +347,6 @@
               "description": "Background color of the `::backdrop`.",
               "name": "--dc-dialog-backdrop",
               "default": "rgb(0 0 0 / 0.5)"
-            },
-            {
-              "description": "Color of the close button icon.",
-              "name": "--dc-dialog-close-color",
-              "default": "#6b7280"
-            },
-            {
-              "description": "Background color of the close button on hover.",
-              "name": "--dc-dialog-close-bg-hover",
-              "default": "#f3f4f6"
-            },
-            {
-              "description": "Color of the close button icon on hover.",
-              "name": "--dc-dialog-close-color-hover",
-              "default": "#111827"
             }
           ],
           "slots": [
@@ -401,17 +405,28 @@
               "privacy": "private"
             },
             {
+              "kind": "method",
+              "name": "#closeDialog",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#canAnimate",
+              "static": true,
+              "privacy": "private"
+            },
+            {
               "kind": "field",
               "name": "adoptedStyleSheets",
               "type": {
                 "text": "array"
               },
-              "default": "[styles]"
+              "default": "[sharedStyles, styles]"
             },
             {
               "kind": "field",
               "name": "innerHTML",
-              "default": "` <dialog role=\"dialog\" aria-modal=\"true\" > <div class=\"content\"> <button type=\"button\" class=\"close\" aria-label=\"Close\">×</button> <slot></slot> <div class=\"footer\"> <slot name=\"footer\"></slot> </div> </div> </dialog> `"
+              "default": "` <dialog role=\"dialog\" aria-modal=\"true\" > <div class=\"content\"> <dc-close-button class=\"close\"></dc-close-button> <slot></slot> <div class=\"footer\"> <slot name=\"footer\"></slot> </div> </div> </dialog> `"
             }
           ],
           "events": [
@@ -455,6 +470,555 @@
           "declaration": {
             "name": "DcDialog",
             "module": "src/components/dialog/dc-dialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/close-button/dc-close-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A small round button with an × icon, used to close or clear things.",
+          "name": "DcCloseButton",
+          "cssProperties": [
+            {
+              "description": "Icon color.",
+              "name": "--dc-close-button-color",
+              "default": "#6b7280"
+            },
+            {
+              "description": "Background color on hover.",
+              "name": "--dc-close-button-bg-hover",
+              "default": "#f3f4f6"
+            },
+            {
+              "description": "Icon color on hover.",
+              "name": "--dc-close-button-color-hover",
+              "default": "#111827"
+            },
+            {
+              "description": "Focus ring color.",
+              "name": "--dc-close-button-focus-ring",
+              "default": "#6b7280"
+            },
+            {
+              "description": "Border radius.",
+              "name": "--dc-close-button-radius",
+              "default": "6px"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#button",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#render",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <button type=\"button\">×</button> `"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible label for the button.",
+              "default": "\"Close\""
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-close-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcCloseButton",
+          "declaration": {
+            "name": "DcCloseButton",
+            "module": "src/components/close-button/dc-close-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-close-button",
+          "declaration": {
+            "name": "DcCloseButton",
+            "module": "src/components/close-button/dc-close-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/input/dc-input.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A text input with a clear button that appears when it has content.",
+          "name": "DcInput",
+          "cssProperties": [
+            {
+              "description": "Background color.",
+              "name": "--dc-input-bg",
+              "default": "#fff"
+            },
+            {
+              "description": "Border color.",
+              "name": "--dc-input-border",
+              "default": "#d1d5db"
+            },
+            {
+              "description": "Border color on hover.",
+              "name": "--dc-input-border-hover",
+              "default": "#9ca3af"
+            },
+            {
+              "description": "Border color when focused.",
+              "name": "--dc-input-border-focus",
+              "default": "#2563eb"
+            },
+            {
+              "description": "Focus ring color.",
+              "name": "--dc-input-focus-ring",
+              "default": "rgb(37 99 235 / 0.15)"
+            },
+            {
+              "description": "Text color.",
+              "name": "--dc-input-color",
+              "default": "#111827"
+            },
+            {
+              "description": "Placeholder text color.",
+              "name": "--dc-input-placeholder-color",
+              "default": "#9ca3af"
+            },
+            {
+              "description": "Background color when disabled.",
+              "name": "--dc-input-bg-disabled",
+              "default": "#f9fafb"
+            },
+            {
+              "description": "Border radius.",
+              "name": "--dc-input-radius",
+              "default": "8px"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#wrapper",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#input",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "DcInputType"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "DcInputType"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "DcInputSize"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "DcInputSize"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "description": "Clears the input's value and fires `dc-input`/`dc-change`."
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "options"
+                }
+              ],
+              "description": "Focuses the input."
+            },
+            {
+              "kind": "method",
+              "name": "#emitInput",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#emitChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#syncHasValue",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#render",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[sharedStyles, styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <div class=\"wrapper\"> <input part=\"input\" /> <dc-close-button class=\"clear\" label=\"Clear\"></dc-close-button> </div> `"
+            }
+          ],
+          "events": [
+            {
+              "name": "dc-input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired with `{ value }` on every value change, mirroring the native `input` event."
+            },
+            {
+              "name": "dc-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired with `{ value }` when the change is committed, mirroring the native `change` event."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "\"text\" | \"email\" | \"password\" | \"search\" | \"tel\" | \"url\" | \"number\""
+              },
+              "description": "Type of the input.",
+              "default": "\"text\""
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "\"sm\" | \"md\" | \"lg\""
+              },
+              "description": "Size of the input.",
+              "default": "\"md\""
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text."
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name submitted with the input's form."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initial value of the input."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the input and prevents interaction.",
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcInput",
+          "declaration": {
+            "name": "DcInput",
+            "module": "src/components/input/dc-input.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-input",
+          "declaration": {
+            "name": "DcInput",
+            "module": "src/components/input/dc-input.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/input-price/dc-input-price.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A price input, wrapping `dc-input`. Restricts typed input to digits, a\nsingle decimal separator and a leading minus sign, then formats the value\nas a Swedish price (two decimals) on blur.",
+          "name": "DcInputPrice",
+          "members": [
+            {
+              "kind": "field",
+              "name": "#input",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "DcInputSize"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "DcInputSize"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "description": "Clears the input's value and fires `dc-input`/`dc-change`."
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "options"
+                }
+              ],
+              "description": "Focuses the input."
+            },
+            {
+              "kind": "method",
+              "name": "#formatOnBlur",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#emitInput",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#emitChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#render",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[sharedStyles, styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "`<dc-input part=\"input\"></dc-input>`"
+            }
+          ],
+          "events": [
+            {
+              "name": "dc-input",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired with `{ value }` on every value change, mirroring the native `input` event."
+            },
+            {
+              "name": "dc-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired with `{ value }` when the change is committed, mirroring the native `change` event."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "size",
+              "type": {
+                "text": "\"sm\" | \"md\" | \"lg\""
+              },
+              "description": "Size of the input.",
+              "default": "\"md\""
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text."
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name submitted with the input's form."
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Initial value of the input."
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disables the input and prevents interaction.",
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-input-price",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcInputPrice",
+          "declaration": {
+            "name": "DcInputPrice",
+            "module": "src/components/input-price/dc-input-price.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-input-price",
+          "declaration": {
+            "name": "DcInputPrice",
+            "module": "src/components/input-price/dc-input-price.js"
           }
         }
       ]

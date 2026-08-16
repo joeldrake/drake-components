@@ -4,7 +4,7 @@
   "tags": [
     {
       "name": "dc-button",
-      "description": "A button element with variant, size and disabled states.\n---\n\n\n### **Slots:**\n - _default_ - Button label content.\n\n### **CSS Properties:**\n - **--dc-button-bg** - Background color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-border** - Border color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-color** - Text color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-bg-hover** - Background color on hover, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-border-hover** - Border color on hover, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-primary-bg** - Background color for the `primary` variant. _(default: #2563eb)_\n- **--dc-button-primary-border** - Border color for the `primary` variant. _(default: #2563eb)_\n- **--dc-button-primary-color** - Text color for the `primary` variant. _(default: #fff)_\n- **--dc-button-primary-bg-hover** - Background color for the `primary` variant on hover. _(default: #1d4ed8)_\n- **--dc-button-primary-border-hover** - Border color for the `primary` variant on hover. _(default: #1d4ed8)_\n- **--dc-button-secondary-bg** - Background color for the `secondary` variant. _(default: #fff)_\n- **--dc-button-secondary-border** - Border color for the `secondary` variant. _(default: #d1d5db)_\n- **--dc-button-secondary-color** - Text color for the `secondary` variant. _(default: #111827)_\n- **--dc-button-secondary-bg-hover** - Background color for the `secondary` variant on hover. _(default: #f3f4f6)_\n- **--dc-button-secondary-border-hover** - Border color for the `secondary` variant on hover. _(default: #d1d5db)_\n- **--dc-button-danger-bg** - Background color for the `danger` variant. _(default: #dc2626)_\n- **--dc-button-danger-border** - Border color for the `danger` variant. _(default: #dc2626)_\n- **--dc-button-danger-color** - Text color for the `danger` variant. _(default: #fff)_\n- **--dc-button-danger-bg-hover** - Background color for the `danger` variant on hover. _(default: #b91c1c)_\n- **--dc-button-danger-border-hover** - Border color for the `danger` variant on hover. _(default: #b91c1c)_",
+      "description": "A button element with variant, size and disabled states.\n---\n\n\n### **Slots:**\n - _default_ - Button label content.\n\n### **CSS Properties:**\n - **--dc-button-bg** - Background color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-border** - Border color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-color** - Text color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-bg-hover** - Background color on hover, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-border-hover** - Border color on hover, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-focus-ring** - Focus ring color, overrides the variant default for all variants. _(default: undefined)_\n- **--dc-button-primary-bg** - Background color for the `primary` variant. _(default: #2563eb)_\n- **--dc-button-primary-border** - Border color for the `primary` variant. _(default: #2563eb)_\n- **--dc-button-primary-color** - Text color for the `primary` variant. _(default: #fff)_\n- **--dc-button-primary-bg-hover** - Background color for the `primary` variant on hover. _(default: #1d4ed8)_\n- **--dc-button-primary-border-hover** - Border color for the `primary` variant on hover. _(default: #1d4ed8)_\n- **--dc-button-primary-focus-ring** - Focus ring color for the `primary` variant. _(default: #1d4ed8)_\n- **--dc-button-secondary-bg** - Background color for the `secondary` variant. _(default: #fff)_\n- **--dc-button-secondary-border** - Border color for the `secondary` variant. _(default: #d1d5db)_\n- **--dc-button-secondary-color** - Text color for the `secondary` variant. _(default: #111827)_\n- **--dc-button-secondary-bg-hover** - Background color for the `secondary` variant on hover. _(default: #f3f4f6)_\n- **--dc-button-secondary-border-hover** - Border color for the `secondary` variant on hover. _(default: #d1d5db)_\n- **--dc-button-secondary-focus-ring** - Focus ring color for the `secondary` variant. _(default: #6b7280)_\n- **--dc-button-danger-bg** - Background color for the `danger` variant. _(default: #dc2626)_\n- **--dc-button-danger-border** - Border color for the `danger` variant. _(default: #dc2626)_\n- **--dc-button-danger-color** - Text color for the `danger` variant. _(default: #fff)_\n- **--dc-button-danger-bg-hover** - Background color for the `danger` variant on hover. _(default: #b91c1c)_\n- **--dc-button-danger-border-hover** - Border color for the `danger` variant on hover. _(default: #b91c1c)_\n- **--dc-button-danger-focus-ring** - Focus ring color for the `danger` variant. _(default: #b91c1c)_",
       "attributes": [
         {
           "name": "variant",
@@ -36,11 +36,100 @@
     },
     {
       "name": "dc-dialog",
-      "description": "A modal dialog built on the native `<dialog>` element.\n---\n\n\n### **Events:**\n - **dc-close** - Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.\n\n### **Methods:**\n - **show()** - Opens the dialog modally.\n- **close()** - Closes the dialog.\n\n### **Slots:**\n - _default_ - Main dialog content.\n- **footer** - Footer content, right-aligned below the main content. Hidden when empty.\n\n### **CSS Properties:**\n - **--dc-dialog-bg** - Background color of the dialog. _(default: #fff)_\n- **--dc-dialog-backdrop** - Background color of the `::backdrop`. _(default: rgb(0 0 0 / 0.5))_\n- **--dc-dialog-close-color** - Color of the close button icon. _(default: #6b7280)_\n- **--dc-dialog-close-bg-hover** - Background color of the close button on hover. _(default: #f3f4f6)_\n- **--dc-dialog-close-color-hover** - Color of the close button icon on hover. _(default: #111827)_",
+      "description": "A modal dialog built on the native `<dialog>` element.\n---\n\n\n### **Events:**\n - **dc-close** - Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.\n\n### **Methods:**\n - **show()** - Opens the dialog modally.\n- **close()** - Closes the dialog.\n\n### **Slots:**\n - _default_ - Main dialog content.\n- **footer** - Footer content, right-aligned below the main content. Hidden when empty.\n\n### **CSS Properties:**\n - **--dc-dialog-bg** - Background color of the dialog. _(default: #fff)_\n- **--dc-dialog-backdrop** - Background color of the `::backdrop`. _(default: rgb(0 0 0 / 0.5))_",
       "attributes": [
         {
           "name": "open",
           "description": "Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "dc-close-button",
+      "description": "A small round button with an × icon, used to close or clear things.\n---\n\n\n### **CSS Properties:**\n - **--dc-close-button-color** - Icon color. _(default: #6b7280)_\n- **--dc-close-button-bg-hover** - Background color on hover. _(default: #f3f4f6)_\n- **--dc-close-button-color-hover** - Icon color on hover. _(default: #111827)_\n- **--dc-close-button-focus-ring** - Focus ring color. _(default: #6b7280)_\n- **--dc-close-button-radius** - Border radius. _(default: 6px)_",
+      "attributes": [
+        {
+          "name": "label",
+          "description": "Accessible label for the button.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "dc-input",
+      "description": "A text input with a clear button that appears when it has content.\n---\n\n\n### **Events:**\n - **dc-input** - Fired with `{ value }` on every value change, mirroring the native `input` event.\n- **dc-change** - Fired with `{ value }` when the change is committed, mirroring the native `change` event.\n\n### **Methods:**\n - **clear()** - Clears the input's value and fires `dc-input`/`dc-change`.\n- **focus(options)** - Focuses the input.\n\n### **CSS Properties:**\n - **--dc-input-bg** - Background color. _(default: #fff)_\n- **--dc-input-border** - Border color. _(default: #d1d5db)_\n- **--dc-input-border-hover** - Border color on hover. _(default: #9ca3af)_\n- **--dc-input-border-focus** - Border color when focused. _(default: #2563eb)_\n- **--dc-input-focus-ring** - Focus ring color. _(default: rgb(37 99 235 / 0.15))_\n- **--dc-input-color** - Text color. _(default: #111827)_\n- **--dc-input-placeholder-color** - Placeholder text color. _(default: #9ca3af)_\n- **--dc-input-bg-disabled** - Background color when disabled. _(default: #f9fafb)_\n- **--dc-input-radius** - Border radius. _(default: 8px)_",
+      "attributes": [
+        {
+          "name": "type",
+          "description": "Type of the input.",
+          "values": [
+            { "name": "text" },
+            { "name": "email" },
+            { "name": "password" },
+            { "name": "search" },
+            { "name": "tel" },
+            { "name": "url" },
+            { "name": "number" }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "Size of the input.",
+          "values": [{ "name": "sm" }, { "name": "md" }, { "name": "lg" }]
+        },
+        {
+          "name": "placeholder",
+          "description": "Placeholder text.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Name submitted with the input's form.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Initial value of the input.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the input and prevents interaction.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "dc-input-price",
+      "description": "A price input, wrapping `dc-input`. Restricts typed input to digits, a\nsingle decimal separator and a leading minus sign, then formats the value\nas a Swedish price (two decimals) on blur.\n---\n\n\n### **Events:**\n - **dc-input** - Fired with `{ value }` on every value change, mirroring the native `input` event.\n- **dc-change** - Fired with `{ value }` when the change is committed, mirroring the native `change` event.\n\n### **Methods:**\n - **clear()** - Clears the input's value and fires `dc-input`/`dc-change`.\n- **focus(options)** - Focuses the input.",
+      "attributes": [
+        {
+          "name": "size",
+          "description": "Size of the input.",
+          "values": [{ "name": "sm" }, { "name": "md" }, { "name": "lg" }]
+        },
+        {
+          "name": "placeholder",
+          "description": "Placeholder text.",
+          "values": []
+        },
+        {
+          "name": "name",
+          "description": "Name submitted with the input's form.",
+          "values": []
+        },
+        {
+          "name": "value",
+          "description": "Initial value of the input.",
+          "values": []
+        },
+        {
+          "name": "disabled",
+          "description": "Disables the input and prevents interaction.",
           "values": []
         }
       ],

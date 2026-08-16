@@ -28,6 +28,11 @@
       "values": []
     },
     {
+      "name": "--dc-button-focus-ring",
+      "description": "Focus ring color, overrides the variant default for all variants.",
+      "values": []
+    },
+    {
       "name": "--dc-button-primary-bg",
       "description": "Background color for the `primary` variant.",
       "values": []
@@ -50,6 +55,11 @@
     {
       "name": "--dc-button-primary-border-hover",
       "description": "Border color for the `primary` variant on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-button-primary-focus-ring",
+      "description": "Focus ring color for the `primary` variant.",
       "values": []
     },
     {
@@ -78,6 +88,11 @@
       "values": []
     },
     {
+      "name": "--dc-button-secondary-focus-ring",
+      "description": "Focus ring color for the `secondary` variant.",
+      "values": []
+    },
+    {
       "name": "--dc-button-danger-bg",
       "description": "Background color for the `danger` variant.",
       "values": []
@@ -103,6 +118,11 @@
       "values": []
     },
     {
+      "name": "--dc-button-danger-focus-ring",
+      "description": "Focus ring color for the `danger` variant.",
+      "values": []
+    },
+    {
       "name": "--dc-card-border-color",
       "description": "Border color for the card and its header/footer dividers.",
       "values": []
@@ -123,18 +143,69 @@
       "values": []
     },
     {
-      "name": "--dc-dialog-close-color",
-      "description": "Color of the close button icon.",
+      "name": "--dc-close-button-color",
+      "description": "Icon color.",
       "values": []
     },
     {
-      "name": "--dc-dialog-close-bg-hover",
-      "description": "Background color of the close button on hover.",
+      "name": "--dc-close-button-bg-hover",
+      "description": "Background color on hover.",
       "values": []
     },
     {
-      "name": "--dc-dialog-close-color-hover",
-      "description": "Color of the close button icon on hover.",
+      "name": "--dc-close-button-color-hover",
+      "description": "Icon color on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-close-button-focus-ring",
+      "description": "Focus ring color.",
+      "values": []
+    },
+    {
+      "name": "--dc-close-button-radius",
+      "description": "Border radius.",
+      "values": []
+    },
+    {
+      "name": "--dc-input-bg",
+      "description": "Background color.",
+      "values": []
+    },
+    {
+      "name": "--dc-input-border",
+      "description": "Border color.",
+      "values": []
+    },
+    {
+      "name": "--dc-input-border-hover",
+      "description": "Border color on hover.",
+      "values": []
+    },
+    {
+      "name": "--dc-input-border-focus",
+      "description": "Border color when focused.",
+      "values": []
+    },
+    {
+      "name": "--dc-input-focus-ring",
+      "description": "Focus ring color.",
+      "values": []
+    },
+    { "name": "--dc-input-color", "description": "Text color.", "values": [] },
+    {
+      "name": "--dc-input-placeholder-color",
+      "description": "Placeholder text color.",
+      "values": []
+    },
+    {
+      "name": "--dc-input-bg-disabled",
+      "description": "Background color when disabled.",
+      "values": []
+    },
+    {
+      "name": "--dc-input-radius",
+      "description": "Border radius.",
       "values": []
     }
   ],
