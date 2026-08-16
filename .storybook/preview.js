@@ -3,6 +3,11 @@ import "../src/index.js";
 /** @type { import('@storybook/web-components-vite').Preview } */
 const preview = {
   parameters: {
+    options: {
+      storySort: {
+        order: ["Introduction", "*"],
+      },
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,
