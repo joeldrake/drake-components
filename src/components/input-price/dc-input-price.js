@@ -30,27 +30,46 @@ const MINUS_SIGNS = ["-", "−"];
 
 /**
  * Filters raw input text down to a valid, partial price: digits, at most one
+ * decimal separator (`.` or `,`), and an optional leading minus sign. Also
+ * tracks where `cursorPos` (an index into `raw`) ends up in the filtered
+ * result, so callers can keep the caret in place after stripped characters
+ * (e.g. a thousands-separator space) shift the text around it.
+ *
+ * @param {string} raw
+ * @param {number} [cursorPos]
+ * @returns {{ value: string, cursor: number }}
+ */
+function filterRawValueWithCursor(raw, cursorPos = raw.length) {
+  let out = "";
+  let hasSeparator = false;
+  let cursor = 0;
+
+  for (let i = 0; i < raw.length; i++) {
+    const char = raw[i];
+    const kept =
+      (i === 0 && MINUS_SIGNS.includes(char)) ||
+      (char >= "0" && char <= "9") ||
+      (!hasSeparator && (char === "." || char === ","));
+
+    if (kept) {
+      out += char;
+      if (char === "." || char === ",") hasSeparator = true;
+    }
+    if (i < cursorPos) cursor = out.length;
+  }
+
+  return { value: out, cursor };
+}
+
+/**
+ * Filters raw input text down to a valid, partial price: digits, at most one
  * decimal separator (`.` or `,`), and an optional leading minus sign.
  *
  * @param {string} raw
  * @returns {string}
  */
 function filterRawValue(raw) {
-  const negative = MINUS_SIGNS.some((sign) => raw.startsWith(sign));
-  const rest = negative ? raw.slice(1) : raw;
-
-  let out = "";
-  let hasSeparator = false;
-  for (const char of rest) {
-    if (char >= "0" && char <= "9") {
-      out += char;
-    } else if ((char === "." || char === ",") && !hasSeparator) {
-      out += char;
-      hasSeparator = true;
-    }
-  }
-
-  return negative ? `-${out}` : out;
+  return filterRawValueWithCursor(raw).value;
 }
 
 /**
@@ -106,9 +125,15 @@ export class DcInputPrice extends HTMLElement {
 
     this.#input.addEventListener("dc-input", (event) => {
       event.stopPropagation();
-      const filtered = filterRawValue(event.detail.value);
+      const raw = event.detail.value;
+      const nativeInput = this.#input.shadowRoot.querySelector("input");
+      const { value: filtered, cursor } = filterRawValueWithCursor(
+        raw,
+        nativeInput.selectionStart ?? raw.length,
+      );
       if (filtered !== this.#input.value) {
         this.#input.value = filtered;
+        nativeInput.setSelectionRange(cursor, cursor);
       }
       this.#emitInput();
     });
