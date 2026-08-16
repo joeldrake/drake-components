@@ -51,3 +51,14 @@ export const OpenByDefault = {
     </dc-dialog>
   `,
 };
+
+export const ScollContent = {
+  render: () => html`
+    <dc-dialog open>
+      <div style="border: 5px dotted grey;height:2000px">Scrolling div</div>
+      <div slot="footer">
+        <dc-button onclick="this.closest('dc-dialog').close()">Close</dc-button>
+      </div>
+    </dc-dialog>
+  `,
+};

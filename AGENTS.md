@@ -22,7 +22,9 @@ src/
 ```
 
 One folder per component, named after the tag without the `dc-` prefix (e.g. `button/` for
-`<dc-button>`).
+`<dc-button>`). This applies even to components that wrap or compose another component —
+e.g. `<dc-input-price>` wraps `<dc-input>`, but still lives in its own `input-price/` folder,
+not nested under `input/`.
 
 ## Component conventions
 
