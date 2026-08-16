@@ -1,3 +1,5 @@
+import "../close-button/dc-close-button.js";
+
 const styles = new CSSStyleSheet();
 styles.replaceSync(/* css */ `
   dialog {
@@ -68,20 +70,6 @@ styles.replaceSync(/* css */ `
     position: absolute;
     top: 0.75rem;
     right: 0.75rem;
-    width: 1.75rem;
-    height: 1.75rem;
-    border: none;
-    border-radius: 6px;
-    background: transparent;
-    color: var(--dc-dialog-close-color, #6b7280);
-    font-size: 1.125rem;
-    line-height: 1;
-    cursor: pointer;
-  }
-
-  .close:hover {
-    background: var(--dc-dialog-close-bg-hover, #f3f4f6);
-    color: var(--dc-dialog-close-color-hover, #111827);
   }
 
   .footer {
@@ -110,9 +98,6 @@ styles.replaceSync(/* css */ `
  *
  * @cssprop [--dc-dialog-bg=#fff] - Background color of the dialog.
  * @cssprop [--dc-dialog-backdrop=rgb(0 0 0 / 0.5)] - Background color of the `::backdrop`.
- * @cssprop [--dc-dialog-close-color=#6b7280] - Color of the close button icon.
- * @cssprop [--dc-dialog-close-bg-hover=#f3f4f6] - Background color of the close button on hover.
- * @cssprop [--dc-dialog-close-color-hover=#111827] - Color of the close button icon on hover.
  */
 export class DcDialog extends HTMLElement {
   static get observedAttributes() {
@@ -134,7 +119,7 @@ export class DcDialog extends HTMLElement {
         aria-modal="true"
       >
         <div class="content">
-          <button type="button" class="close" aria-label="Close">×</button>
+          <dc-close-button class="close"></dc-close-button>
           <slot></slot>
           <div class="footer">
             <slot name="footer"></slot>
