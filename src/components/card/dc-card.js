@@ -7,15 +7,17 @@ styles.replaceSync(/* css */ `
   }
 
   .card {
-    border: 1px solid var(--dc-card-border-color, #e5e7eb);
+    border: 1px solid
+      var(--dc-card-border-color, var(--dc-color-border-subtle, #e5e7eb));
     border-radius: 10px;
-    background: var(--dc-card-bg, #fff);
+    background: var(--dc-card-bg, var(--dc-color-bg, #fff));
     overflow: hidden;
   }
 
   .header {
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--dc-card-border-color, #e5e7eb);
+    border-bottom: 1px solid
+      var(--dc-card-border-color, var(--dc-color-border-subtle, #e5e7eb));
     font-weight: 600;
   }
 
@@ -29,7 +31,8 @@ styles.replaceSync(/* css */ `
 
   .footer {
     padding: 1rem 1.25rem;
-    border-top: 1px solid var(--dc-card-border-color, #e5e7eb);
+    border-top: 1px solid
+      var(--dc-card-border-color, var(--dc-color-border-subtle, #e5e7eb));
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;

@@ -1,0 +1,41 @@
+/**
+ * Drake Components design tokens.
+ *
+ * Every dc-* component falls back to these custom properties for its
+ * colors, so loading this file anywhere in the document (custom properties
+ * pierce shadow DOM) re-themes every component at once.
+ *
+ * To customize: copy this file, change the values, and load your copy
+ * instead.
+ */
+:root {
+  /* Primary */
+  --dc-color-primary: #2563eb;
+  --dc-color-primary-hover: #1d4ed8;
+  --dc-color-on-primary: #ffffff;
+
+  /* Secondary (neutral surface) */
+  --dc-color-secondary: #ffffff;
+  --dc-color-secondary-hover: #f3f4f6;
+  --dc-color-on-secondary: #111827;
+
+  /* Danger */
+  --dc-color-danger: #dc2626;
+  --dc-color-danger-hover: #b91c1c;
+  --dc-color-on-danger: #ffffff;
+
+  /* Surface & text */
+  --dc-color-bg: #ffffff;
+  --dc-color-bg-subtle: #f9fafb;
+  --dc-color-text: #111827;
+  --dc-color-text-muted: #6b7280;
+  --dc-color-placeholder: #9ca3af;
+
+  /* Borders */
+  --dc-color-border: #d1d5db;
+  --dc-color-border-hover: #9ca3af;
+  --dc-color-border-subtle: #e5e7eb;
+
+  /* Focus */
+  --dc-color-focus-ring: #1d4ed8;
+}

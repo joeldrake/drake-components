@@ -28,6 +28,18 @@ Use in your app/website
 <dc-button variant="primary">Click me</dc-button>
 ```
 
+## Theming
+
+Components can read their colors from a set of CSS custom properties
+(`--dc-color-*`), defined in `src/styles/tokens.css`
+
+To use your own brand colors, copy `tokens.css` into your project, edit the
+values, and load your copy instead of the original.
+
+Individual components also expose their own `--dc-*` custom properties
+(e.g. `--dc-button-primary-bg`) for one-off overrides; see each component's
+doc block for the full list. Those take priority over the shared tokens.
+
 ## Development
 
 ```sh

@@ -14,7 +14,7 @@ styles.replaceSync(/* css */ `
     border: none;
     border-radius: var(--dc-close-button-radius, 6px);
     background: transparent;
-    color: var(--dc-close-button-color, #6b7280);
+    color: var(--dc-close-button-color, var(--dc-color-text-muted, #6b7280));
     font-size: 1.125rem;
     line-height: 1;
     cursor: pointer;
@@ -24,8 +24,11 @@ styles.replaceSync(/* css */ `
   }
 
   button:hover {
-    background: var(--dc-close-button-bg-hover, #f3f4f6);
-    color: var(--dc-close-button-color-hover, #111827);
+    background: var(
+      --dc-close-button-bg-hover,
+      var(--dc-color-secondary-hover, #f3f4f6)
+    );
+    color: var(--dc-close-button-color-hover, var(--dc-color-text, #111827));
   }
 
   button:focus-visible {

@@ -47,21 +47,30 @@ styles.replaceSync(/* css */ `
 
   /* variants */
   button.primary {
-    background: var(--dc-button-bg, var(--dc-button-primary-bg, #2563eb));
+    background: var(
+      --dc-button-bg,
+      var(--dc-button-primary-bg, var(--dc-color-primary, #2563eb))
+    );
     border-color: var(
       --dc-button-border,
-      var(--dc-button-primary-border, #2563eb)
+      var(--dc-button-primary-border, var(--dc-color-primary, #2563eb))
     );
-    color: var(--dc-button-color, var(--dc-button-primary-color, #fff));
+    color: var(
+      --dc-button-color,
+      var(--dc-button-primary-color, var(--dc-color-on-primary, #fff))
+    );
   }
   button.primary:not(:disabled):hover {
     background: var(
       --dc-button-bg-hover,
-      var(--dc-button-primary-bg-hover, #1d4ed8)
+      var(--dc-button-primary-bg-hover, var(--dc-color-primary-hover, #1d4ed8))
     );
     border-color: var(
       --dc-button-border-hover,
-      var(--dc-button-primary-border-hover, #1d4ed8)
+      var(
+        --dc-button-primary-border-hover,
+        var(--dc-color-primary-hover, #1d4ed8)
+      )
     );
   }
   button.primary:focus-visible {
@@ -70,26 +79,38 @@ styles.replaceSync(/* css */ `
       0 0 0 4px
         var(
           --dc-button-focus-ring,
-          var(--dc-button-primary-focus-ring, #1d4ed8)
+          var(
+            --dc-button-primary-focus-ring,
+            var(--dc-color-focus-ring, #1d4ed8)
+          )
         );
   }
 
   button.secondary {
-    background: var(--dc-button-bg, var(--dc-button-secondary-bg, #fff));
+    background: var(
+      --dc-button-bg,
+      var(--dc-button-secondary-bg, var(--dc-color-secondary, #fff))
+    );
     border-color: var(
       --dc-button-border,
-      var(--dc-button-secondary-border, #d1d5db)
+      var(--dc-button-secondary-border, var(--dc-color-border, #d1d5db))
     );
-    color: var(--dc-button-color, var(--dc-button-secondary-color, #111827));
+    color: var(
+      --dc-button-color,
+      var(--dc-button-secondary-color, var(--dc-color-on-secondary, #111827))
+    );
   }
   button.secondary:not(:disabled):hover {
     background: var(
       --dc-button-bg-hover,
-      var(--dc-button-secondary-bg-hover, #f3f4f6)
+      var(
+        --dc-button-secondary-bg-hover,
+        var(--dc-color-secondary-hover, #f3f4f6)
+      )
     );
     border-color: var(
       --dc-button-border-hover,
-      var(--dc-button-secondary-border-hover, #d1d5db)
+      var(--dc-button-secondary-border-hover, var(--dc-color-border, #d1d5db))
     );
   }
   button.secondary:focus-visible {
@@ -103,31 +124,37 @@ styles.replaceSync(/* css */ `
   }
 
   button.danger {
-    background: var(--dc-button-bg, var(--dc-button-danger-bg, #dc2626));
+    background: var(
+      --dc-button-bg,
+      var(--dc-button-danger-bg, var(--dc-color-danger, #dc2626))
+    );
     border-color: var(
       --dc-button-border,
-      var(--dc-button-danger-border, #dc2626)
+      var(--dc-button-danger-border, var(--dc-color-danger, #dc2626))
     );
-    color: var(--dc-button-color, var(--dc-button-danger-color, #fff));
+    color: var(
+      --dc-button-color,
+      var(--dc-button-danger-color, var(--dc-color-on-danger, #fff))
+    );
   }
   button.danger:not(:disabled):hover {
     background: var(
       --dc-button-bg-hover,
-      var(--dc-button-danger-bg-hover, #b91c1c)
+      var(--dc-button-danger-bg-hover, var(--dc-color-danger-hover, #b91c1c))
     );
     border-color: var(
       --dc-button-border-hover,
-      var(--dc-button-danger-border-hover, #b91c1c)
+      var(
+        --dc-button-danger-border-hover,
+        var(--dc-color-danger-hover, #b91c1c)
+      )
     );
   }
   button.danger:focus-visible {
     box-shadow:
       0 0 0 2px #fff,
       0 0 0 4px
-        var(
-          --dc-button-focus-ring,
-          var(--dc-button-danger-focus-ring, #b91c1c)
-        );
+        var(--dc-button-focus-ring, var(--dc-button-danger-focus-ring, #b91c1c));
   }
 `);
 

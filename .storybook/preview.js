@@ -1,4 +1,5 @@
 import "../src/index.js";
+import "../src/styles/tokens.css";
 
 /** @type { import('@storybook/web-components-vite').Preview } */
 const preview = {

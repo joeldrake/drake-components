@@ -19,9 +19,9 @@ styles.replaceSync(/* css */ `
     line-height: 1;
     width: 100%;
     border-radius: var(--dc-input-radius, 8px);
-    border: 1px solid var(--dc-input-border, #d1d5db);
-    background: var(--dc-input-bg, #fff);
-    color: var(--dc-input-color, #111827);
+    border: 1px solid var(--dc-input-border, var(--dc-color-border, #d1d5db));
+    background: var(--dc-input-bg, var(--dc-color-bg, #fff));
+    color: var(--dc-input-color, var(--dc-color-text, #111827));
     outline: none;
     transition:
       border-color 0.15s ease,
@@ -29,22 +29,31 @@ styles.replaceSync(/* css */ `
   }
 
   input::placeholder {
-    color: var(--dc-input-placeholder-color, #9ca3af);
+    color: var(
+      --dc-input-placeholder-color,
+      var(--dc-color-placeholder, #9ca3af)
+    );
   }
 
   input:not(:disabled):hover {
-    border-color: var(--dc-input-border-hover, #9ca3af);
+    border-color: var(
+      --dc-input-border-hover,
+      var(--dc-color-border-hover, #9ca3af)
+    );
   }
 
   input:focus-visible {
-    border-color: var(--dc-input-border-focus, #2563eb);
+    border-color: var(
+      --dc-input-border-focus,
+      var(--dc-color-focus-ring, #2563eb)
+    );
     box-shadow: 0 0 0 3px var(--dc-input-focus-ring, rgb(37 99 235 / 0.15));
   }
 
   input:disabled {
     cursor: not-allowed;
     opacity: 0.5;
-    background: var(--dc-input-bg-disabled, #f9fafb);
+    background: var(--dc-input-bg-disabled, var(--dc-color-bg-subtle, #f9fafb));
   }
 
   /* sizes */

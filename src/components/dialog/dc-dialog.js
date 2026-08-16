@@ -7,7 +7,7 @@ styles.replaceSync(/* css */ `
     padding: 0;
     border: none;
     border-radius: 10px;
-    background: var(--dc-dialog-bg, #fff);
+    background: var(--dc-dialog-bg, var(--dc-color-bg, #fff));
     box-shadow:
       0 20px 25px -5px rgb(0 0 0 / 0.1),
       0 8px 10px -6px rgb(0 0 0 / 0.1);
