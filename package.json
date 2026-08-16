@@ -1,6 +1,6 @@
 {
   "name": "drake-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Drake Components (dc-*) — vanilla web components, no build required",
   "type": "module",
   "scripts": {
