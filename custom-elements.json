@@ -331,151 +331,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/dialog/dc-dialog.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A modal dialog built on the native `<dialog>` element.",
-          "name": "DcDialog",
-          "cssProperties": [
-            {
-              "description": "Background color of the dialog.",
-              "name": "--dc-dialog-bg",
-              "default": "#fff"
-            },
-            {
-              "description": "Background color of the `::backdrop`.",
-              "name": "--dc-dialog-backdrop",
-              "default": "rgb(0 0 0 / 0.5)"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Main dialog content.",
-              "name": ""
-            },
-            {
-              "description": "Footer content, right-aligned below the main content. Hidden when empty.",
-              "name": "footer"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "#dialog",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "#syncingAttribute",
-              "privacy": "private",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "parameters": [
-                {
-                  "name": "value",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "show",
-              "description": "Opens the dialog modally."
-            },
-            {
-              "kind": "method",
-              "name": "close",
-              "description": "Closes the dialog."
-            },
-            {
-              "kind": "method",
-              "name": "#sync",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#closeDialog",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#canAnimate",
-              "static": true,
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[sharedStyles, styles]"
-            },
-            {
-              "kind": "field",
-              "name": "innerHTML",
-              "default": "` <dialog role=\"dialog\" aria-modal=\"true\" > <div class=\"content\"> <dc-close-button class=\"close\"></dc-close-button> <slot></slot> <div class=\"footer\"> <slot name=\"footer\"></slot> </div> </div> </dialog> `"
-            }
-          ],
-          "events": [
-            {
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.",
-              "name": "dc-close"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "description": "Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.",
-              "default": "false"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "dc-dialog",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "DcDialog",
-          "declaration": {
-            "name": "DcDialog",
-            "module": "src/components/dialog/dc-dialog.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "dc-dialog",
-          "declaration": {
-            "name": "DcDialog",
-            "module": "src/components/dialog/dc-dialog.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/close-button/dc-close-button.js",
       "declarations": [
         {
@@ -566,6 +421,155 @@
           "declaration": {
             "name": "DcCloseButton",
             "module": "src/components/close-button/dc-close-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dialog/dc-dialog.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A modal dialog built on the native `<dialog>` element.",
+          "name": "DcDialog",
+          "cssProperties": [
+            {
+              "description": "Background color of the dialog.",
+              "name": "--dc-dialog-bg",
+              "default": "#fff"
+            },
+            {
+              "description": "Background color of the `::backdrop`.",
+              "name": "--dc-dialog-backdrop",
+              "default": "rgb(0 0 0 / 0.5)"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Main dialog content. Scrolls independently when it overflows the dialog's max height.",
+              "name": ""
+            },
+            {
+              "description": "Header content, shown above the main content. Hidden when empty.",
+              "name": "header"
+            },
+            {
+              "description": "Footer content, right-aligned below the main content. Hidden when empty.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#dialog",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#syncingAttribute",
+              "privacy": "private",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "description": "Opens the dialog modally."
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "description": "Closes the dialog."
+            },
+            {
+              "kind": "method",
+              "name": "#sync",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#closeDialog",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#canAnimate",
+              "static": true,
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[sharedStyles, styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <dialog role=\"dialog\" aria-modal=\"true\" > <div class=\"content\"> <dc-close-button class=\"close\"></dc-close-button> <div class=\"header\"> <slot name=\"header\"></slot> </div> <div class=\"main\"> <slot></slot> </div> <div class=\"footer\"> <slot name=\"footer\"></slot> </div> </div> </dialog> `"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.",
+              "name": "dc-close"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.",
+              "default": "false"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-dialog",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcDialog",
+          "declaration": {
+            "name": "DcDialog",
+            "module": "src/components/dialog/dc-dialog.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-dialog",
+          "declaration": {
+            "name": "DcDialog",
+            "module": "src/components/dialog/dc-dialog.js"
           }
         }
       ]

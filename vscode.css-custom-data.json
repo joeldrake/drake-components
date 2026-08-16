@@ -133,16 +133,6 @@
       "values": []
     },
     {
-      "name": "--dc-dialog-bg",
-      "description": "Background color of the dialog.",
-      "values": []
-    },
-    {
-      "name": "--dc-dialog-backdrop",
-      "description": "Background color of the `::backdrop`.",
-      "values": []
-    },
-    {
       "name": "--dc-close-button-color",
       "description": "Icon color.",
       "values": []
@@ -165,6 +155,16 @@
     {
       "name": "--dc-close-button-radius",
       "description": "Border radius.",
+      "values": []
+    },
+    {
+      "name": "--dc-dialog-bg",
+      "description": "Background color of the dialog.",
+      "values": []
+    },
+    {
+      "name": "--dc-dialog-backdrop",
+      "description": "Background color of the `::backdrop`.",
       "values": []
     },
     {

@@ -35,24 +35,24 @@
       "references": []
     },
     {
-      "name": "dc-dialog",
-      "description": "A modal dialog built on the native `<dialog>` element.\n---\n\n\n### **Events:**\n - **dc-close** - Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.\n\n### **Methods:**\n - **show()** - Opens the dialog modally.\n- **close()** - Closes the dialog.\n\n### **Slots:**\n - _default_ - Main dialog content.\n- **footer** - Footer content, right-aligned below the main content. Hidden when empty.\n\n### **CSS Properties:**\n - **--dc-dialog-bg** - Background color of the dialog. _(default: #fff)_\n- **--dc-dialog-backdrop** - Background color of the `::backdrop`. _(default: rgb(0 0 0 / 0.5))_",
-      "attributes": [
-        {
-          "name": "open",
-          "description": "Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.",
-          "values": []
-        }
-      ],
-      "references": []
-    },
-    {
       "name": "dc-close-button",
       "description": "A small round button with an × icon, used to close or clear things.\n---\n\n\n### **CSS Properties:**\n - **--dc-close-button-color** - Icon color. _(default: #6b7280)_\n- **--dc-close-button-bg-hover** - Background color on hover. _(default: #f3f4f6)_\n- **--dc-close-button-color-hover** - Icon color on hover. _(default: #111827)_\n- **--dc-close-button-focus-ring** - Focus ring color. _(default: #6b7280)_\n- **--dc-close-button-radius** - Border radius. _(default: 6px)_",
       "attributes": [
         {
           "name": "label",
           "description": "Accessible label for the button.",
+          "values": []
+        }
+      ],
+      "references": []
+    },
+    {
+      "name": "dc-dialog",
+      "description": "A modal dialog built on the native `<dialog>` element.\n---\n\n\n### **Events:**\n - **dc-close** - Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.\n\n### **Methods:**\n - **show()** - Opens the dialog modally.\n- **close()** - Closes the dialog.\n\n### **Slots:**\n - _default_ - Main dialog content. Scrolls independently when it overflows the dialog's max height.\n- **header** - Header content, shown above the main content. Hidden when empty.\n- **footer** - Footer content, right-aligned below the main content. Hidden when empty.\n\n### **CSS Properties:**\n - **--dc-dialog-bg** - Background color of the dialog. _(default: #fff)_\n- **--dc-dialog-backdrop** - Background color of the `::backdrop`. _(default: rgb(0 0 0 / 0.5))_",
+      "attributes": [
+        {
+          "name": "open",
+          "description": "Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.",
           "values": []
         }
       ],
