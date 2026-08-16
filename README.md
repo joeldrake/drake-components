@@ -36,6 +36,15 @@ Components can read their colors from a set of CSS custom properties
 To use your own brand colors, copy `tokens.css` into your project, edit the
 values, and load your copy instead of the original.
 
+Dark values are included and apply automatically when the OS is set to dark
+(`prefers-color-scheme`). To force a theme regardless of the OS setting, set
+`data-theme="dark"` or `data-theme="light"` on `<html>` (or any ancestor of
+the components):
+
+```html
+<html data-theme="dark"></html>
+```
+
 Individual components also expose their own `--dc-*` custom properties
 (e.g. `--dc-button-primary-bg`) for one-off overrides; see each component's
 doc block for the full list. Those take priority over the shared tokens.

@@ -44,10 +44,16 @@ Follow the existing components ([dc-button.js](src/components/button/dc-button.j
   `attributeChangedCallback` and `connectedCallback`.
 - Private DOM refs and internal state use real private fields (`#button`, `#dialog`, ...).
 - Theming goes through CSS custom properties with a `--dc-<component>-<thing>` naming
-  scheme (e.g. `--dc-button-bg`, `--dc-card-border-color`), each with a sensible fallback:
-  `var(--dc-button-bg, #2563eb)`. Where a component has variants, prefer a two-level
-  fallback so a var can be overridden globally or per-variant:
-  `var(--dc-button-bg, var(--dc-button-primary-bg, #2563eb))`.
+  scheme (e.g. `--dc-button-bg`, `--dc-card-border-color`). For colors, the fallback chain
+  should bottom out in the shared design token from
+  [src/styles/tokens.css](src/styles/tokens.css) (a `--dc-color-*` custom property), which
+  itself falls back to a hardcoded hex so the component still works if `tokens.css` isn't
+  loaded: `var(--dc-button-bg, #2563eb)` becomes
+  `var(--dc-button-bg, var(--dc-color-primary, #2563eb))`. Where a component has variants,
+  that's a three-level fallback so a var can be overridden globally, per-variant, or via the
+  shared token: `var(--dc-button-bg, var(--dc-button-primary-bg, var(--dc-color-primary, #2563eb)))`.
+  Non-color properties (radius, spacing, ...) don't have shared tokens yet and keep the
+  simpler two-level pattern.
 - End the file with:
   ```js
   if (!customElements.get("dc-<name>")) {
@@ -55,6 +61,27 @@ Follow the existing components ([dc-button.js](src/components/button/dc-button.j
   }
   ```
   (guards against duplicate registration if the module is evaluated twice.)
+
+## Shared design tokens (`src/styles/tokens.css`)
+
+[tokens.css](src/styles/tokens.css) defines the `--dc-color-*` custom properties every
+component falls back to (see above) — `:root { --dc-color-primary: #2563eb; ... }`. It's a
+plain CSS file, not a JS module: consumers load it directly (`<link>`/`@import`) or copy it
+to re-theme with their own brand colors. It's listed in `README.md`'s Theming section, not
+in the component list.
+
+Every token is specified twice for dark mode: once under `@media (prefers-color-scheme:
+dark) { :root { ... } }` for automatic OS-based switching, and once under
+`:root[data-theme="dark"] { ... }` (with the mirror-image `:root[data-theme="light"]` block
+forcing light) so consumers can override the OS setting manually. A media query can't be
+combined with an attribute selector in one rule, so when adding or changing a token, update
+all three blocks (base `:root`, the media block, and `[data-theme="dark"]`) — plus
+`[data-theme="light"]` if you touched the light values. This was a deliberate choice over
+the newer `light-dark()` CSS function (which would need the value written only once) to
+avoid raising the minimum supported browser version; revisit if that tradeoff changes.
+
+`tokens.css` isn't a custom element, so it has no JSDoc and isn't touched by
+`npm run analyze` — just keep it in sync by hand and run `npx prettier --write .`.
 
 ## JSDoc + editor type tooling
 

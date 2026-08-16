@@ -5,6 +5,11 @@
  * colors, so loading this file anywhere in the document (custom properties
  * pierce shadow DOM) re-themes every component at once.
  *
+ * Dark values apply automatically when the OS is set to dark
+ * (prefers-color-scheme), and can be forced either way regardless of the OS
+ * setting by adding data-theme="dark" or data-theme="light" to <html> (or
+ * any ancestor of the components).
+ *
  * To customize: copy this file, change the values, and load your copy
  * instead.
  */
@@ -38,4 +43,65 @@
 
   /* Focus */
   --dc-color-focus-ring: #1d4ed8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Primary */
+    --dc-color-primary: #3b82f6;
+    --dc-color-primary-hover: #60a5fa;
+    --dc-color-on-primary: #ffffff;
+
+    /* Secondary (neutral surface) */
+    --dc-color-secondary: #1f2937;
+    --dc-color-secondary-hover: #374151;
+    --dc-color-on-secondary: #f9fafb;
+
+    /* Danger */
+    --dc-color-danger: #ef4444;
+    --dc-color-danger-hover: #f87171;
+    --dc-color-on-danger: #ffffff;
+
+    /* Surface & text */
+    --dc-color-bg: #111827;
+    --dc-color-bg-subtle: #1f2937;
+    --dc-color-text: #f9fafb;
+    --dc-color-text-muted: #9ca3af;
+    --dc-color-placeholder: #6b7280;
+
+    /* Borders */
+    --dc-color-border: #374151;
+    --dc-color-border-hover: #4b5563;
+    --dc-color-border-subtle: #1f2937;
+
+    /* Focus */
+    --dc-color-focus-ring: #60a5fa;
+  }
+}
+
+/* Forces dark regardless of the OS setting. */
+:root[data-theme="dark"] {
+  --dc-color-primary: #3b82f6;
+  --dc-color-primary-hover: #60a5fa;
+  --dc-color-on-primary: #ffffff;
+
+  --dc-color-secondary: #1f2937;
+  --dc-color-secondary-hover: #374151;
+  --dc-color-on-secondary: #f9fafb;
+
+  --dc-color-danger: #ef4444;
+  --dc-color-danger-hover: #f87171;
+  --dc-color-on-danger: #ffffff;
+
+  --dc-color-bg: #111827;
+  --dc-color-bg-subtle: #1f2937;
+  --dc-color-text: #f9fafb;
+  --dc-color-text-muted: #9ca3af;
+  --dc-color-placeholder: #6b7280;
+
+  --dc-color-border: #374151;
+  --dc-color-border-hover: #4b5563;
+  --dc-color-border-subtle: #1f2937;
+
+  --dc-color-focus-ring: #60a5fa;
 }

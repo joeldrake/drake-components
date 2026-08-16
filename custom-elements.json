@@ -810,6 +810,13 @@
               },
               "description": "Disables the input and prevents interaction.",
               "default": "false"
+            },
+            {
+              "name": "inputmode",
+              "type": {
+                "text": "string"
+              },
+              "description": "Hints the virtual keyboard to display, e.g. \"decimal\" or \"numeric\"."
             }
           ],
           "superclass": {
@@ -943,7 +950,7 @@
             {
               "kind": "field",
               "name": "innerHTML",
-              "default": "`<dc-input part=\"input\"></dc-input>`"
+              "default": "`<dc-input part=\"input\" inputmode=\"decimal\" ></dc-input>`"
             }
           ],
           "events": [

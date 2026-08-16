@@ -99,6 +99,11 @@
           "name": "disabled",
           "description": "Disables the input and prevents interaction.",
           "values": []
+        },
+        {
+          "name": "inputmode",
+          "description": "Hints the virtual keyboard to display, e.g. \"decimal\" or \"numeric\".",
+          "values": []
         }
       ],
       "references": []
