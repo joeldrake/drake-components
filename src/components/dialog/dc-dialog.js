@@ -11,7 +11,7 @@ styles.replaceSync(/* css */ `
     box-shadow:
       0 20px 25px -5px rgb(0 0 0 / 0.1),
       0 8px 10px -6px rgb(0 0 0 / 0.1);
-    min-width: 320px;
+    min-width: min(500px, calc(100vw - 2rem));
     max-width: min(560px, calc(100vw - 2rem));
     max-height: calc(100vh - 4rem);
     overflow: hidden;
