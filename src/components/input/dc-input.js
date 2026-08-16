@@ -92,6 +92,7 @@ const SIZES = ["sm", "md", "lg"];
  * @attr {string} [name] - Name submitted with the input's form.
  * @attr {string} [value] - Initial value of the input.
  * @attr {boolean} [disabled=false] - Disables the input and prevents interaction.
+ * @attr {string} [inputmode] - Hints the virtual keyboard to display, e.g. "decimal" or "numeric".
  *
  * @fires {CustomEvent} dc-input - Fired with `{ value }` on every value change, mirroring the native `input` event.
  * @fires {CustomEvent} dc-change - Fired with `{ value }` when the change is committed, mirroring the native `change` event.
@@ -108,7 +109,15 @@ const SIZES = ["sm", "md", "lg"];
  */
 export class DcInput extends HTMLElement {
   static get observedAttributes() {
-    return ["type", "size", "placeholder", "name", "value", "disabled"];
+    return [
+      "type",
+      "size",
+      "placeholder",
+      "name",
+      "value",
+      "disabled",
+      "inputmode",
+    ];
   }
 
   #wrapper;
@@ -235,6 +244,7 @@ export class DcInput extends HTMLElement {
     this.#input.placeholder = this.getAttribute("placeholder") ?? "";
     this.#input.name = this.getAttribute("name") ?? "";
     this.#input.disabled = this.disabled;
+    this.#input.inputMode = this.getAttribute("inputmode") ?? "";
     if (
       this.hasAttribute("value") &&
       this.value !== this.getAttribute("value")
