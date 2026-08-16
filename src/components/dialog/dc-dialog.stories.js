@@ -14,7 +14,7 @@ export const Default = {
         Open dialog
       </dc-button>
       <dc-dialog>
-        <h2 style="margin: 0 0 0.5rem;">Dialog title</h2>
+        <h2 style="margin: 0;" slot="header">Dialog title</h2>
         <p style="margin: 0; color: #4b5563;">
           A vanilla &lt;dc-dialog&gt; built on the native &lt;dialog&gt; element
           — focus trapping and Escape-to-close come for free.
@@ -36,25 +36,16 @@ export const Default = {
   `,
 };
 
-export const OpenByDefault = {
+export const HeaderAndScrollingContent = {
   render: () => html`
-    <dc-dialog open>
-      <h2 style="margin: 0 0 0.5rem;">Already open</h2>
-      <p style="margin: 0; color: #4b5563;">
-        Setting the "open" attribute opens the dialog immediately.
-      </p>
-      <div slot="footer">
-        <dc-button variant="primary" onclick="this.closest('dc-dialog').close()"
-          >Got it</dc-button
-        >
-      </div>
-    </dc-dialog>
-  `,
-};
-
-export const ScollContent = {
-  render: () => html`
-    <dc-dialog open>
+        <dc-button
+      variant="primary"
+      onclick="this.nextElementSibling.show()"
+    >
+      Open dialog
+    </dc-button>
+    <dc-dialog>
+      <h2 slot="header" style="margin: 0;">Dialog title</h2>
       <div style="border: 5px dotted grey;height:2000px">Scrolling div</div>
       <div slot="footer">
         <dc-button onclick="this.closest('dc-dialog').close()">Close</dc-button>

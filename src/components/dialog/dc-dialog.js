@@ -13,7 +13,14 @@ styles.replaceSync(/* css */ `
       0 8px 10px -6px rgb(0 0 0 / 0.1);
     min-width: 320px;
     max-width: min(560px, calc(100vw - 2rem));
+    max-height: calc(100vh - 4rem);
+    overflow: hidden;
     animation: dc-dialog-in 0.18s ease;
+  }
+
+  dialog[open] {
+    display: flex;
+    flex-direction: column;
   }
 
   dialog.closing {
@@ -57,7 +64,12 @@ styles.replaceSync(/* css */ `
 
   .content {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
     padding: 1.5rem;
+    min-height: 0;
+    flex: 1 1 auto;
   }
 
   .close {
@@ -66,11 +78,25 @@ styles.replaceSync(/* css */ `
     right: 0.75rem;
   }
 
+  .header {
+    flex: 0 0 auto;
+  }
+
+  .header:empty {
+    display: none;
+  }
+
+  .main {
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
   .footer {
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
-    margin-top: 1.25rem;
+    flex: 0 0 auto;
   }
 
   .footer:empty {
@@ -85,7 +111,8 @@ styles.replaceSync(/* css */ `
  *
  * @attr {boolean} [open=false] - Whether the dialog is open. Reflects `show()`/`close()`; showing/hiding it modally.
  *
- * @slot - Main dialog content.
+ * @slot - Main dialog content. Scrolls independently when it overflows the dialog's max height.
+ * @slot header - Header content, shown above the main content. Hidden when empty.
  * @slot footer - Footer content, right-aligned below the main content. Hidden when empty.
  *
  * @fires {CustomEvent} dc-close - Fired when the dialog closes, whether via `close()`, the close button, Escape, or a backdrop click.
@@ -114,7 +141,12 @@ export class DcDialog extends HTMLElement {
       >
         <div class="content">
           <dc-close-button class="close"></dc-close-button>
-          <slot></slot>
+          <div class="header">
+            <slot name="header"></slot>
+          </div>
+          <div class="main">
+            <slot></slot>
+          </div>
           <div class="footer">
             <slot name="footer"></slot>
           </div>
