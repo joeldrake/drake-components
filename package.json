@@ -15,13 +15,13 @@
   ],
   "author": "Joel Drake",
   "license": "MIT",
-  "homepage": "https://drakecomponents.joeldrake.deno.net/",
+  "homepage": "https://drake-components.joeldrake.deno.net/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joeldrake/drakeComponents.git"
+    "url": "git+https://github.com/joeldrake/drake-components.git"
   },
   "bugs": {
-    "url": "https://github.com/joeldrake/drakeComponents/issues"
+    "url": "https://github.com/joeldrake/drake-components/issues"
   },
   "files": [
     "src",

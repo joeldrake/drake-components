@@ -3,7 +3,7 @@
 Vanilla web components, no build step required. Every component registers itself as a
 Custom Element with the `dc-` prefix.
 
-**Homepage / Storybook:** https://drakecomponents.joeldrake.deno.net/
+**Homepage / Storybook:** https://drake-components.joeldrake.deno.net/
 
 ## Install
 
