@@ -13,8 +13,24 @@
     "custom-elements",
     "storybook"
   ],
-  "author": "",
+  "author": "Joel Drake",
   "license": "ISC",
+  "homepage": "https://drakecomponents.joeldrake.deno.net/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeldrake/drakeComponents.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joeldrake/drakeComponents/issues"
+  },
+  "files": [
+    "src",
+    "!src/**/*.stories.js",
+    "custom-elements.json",
+    "vscode.html-custom-data.json",
+    "vscode.css-custom-data.json"
+  ],
+  "main": "src/index.js",
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.11.0",
     "@storybook/addon-a11y": "^10.5.8",
