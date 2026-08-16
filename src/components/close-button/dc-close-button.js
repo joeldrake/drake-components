@@ -12,7 +12,7 @@ styles.replaceSync(/* css */ `
     height: 1.75rem;
     padding: 0;
     border: none;
-    border-radius: 6px;
+    border-radius: var(--dc-close-button-radius, 6px);
     background: transparent;
     color: var(--dc-close-button-color, #6b7280);
     font-size: 1.125rem;
@@ -47,6 +47,7 @@ styles.replaceSync(/* css */ `
  * @cssprop [--dc-close-button-bg-hover=#f3f4f6] - Background color on hover.
  * @cssprop [--dc-close-button-color-hover=#111827] - Icon color on hover.
  * @cssprop [--dc-close-button-focus-ring=#6b7280] - Focus ring color.
+ * @cssprop [--dc-close-button-radius=6px] - Border radius.
  */
 export class DcCloseButton extends HTMLElement {
   static get observedAttributes() {

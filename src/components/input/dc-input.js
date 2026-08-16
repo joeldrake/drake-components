@@ -72,7 +72,8 @@ styles.replaceSync(/* css */ `
   .clear {
     display: none;
     position: absolute;
-    right: 0.375rem;
+    right: calc(0.375rem - 1px);
+    --dc-close-button-radius: calc(var(--dc-input-radius, 8px) - 5px);
   }
 
   .wrapper.has-value .clear {
