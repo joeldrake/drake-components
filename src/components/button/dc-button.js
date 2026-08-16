@@ -29,6 +29,10 @@ styles.replaceSync(/* css */ `
     opacity: 0.5;
   }
 
+  button:focus-visible {
+    outline: none;
+  }
+
   /* sizes */
   button.sm {
     padding: 0.375rem 0.75rem;
@@ -60,6 +64,15 @@ styles.replaceSync(/* css */ `
       var(--dc-button-primary-border-hover, #1d4ed8)
     );
   }
+  button.primary:focus-visible {
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px
+        var(
+          --dc-button-focus-ring,
+          var(--dc-button-primary-focus-ring, #1d4ed8)
+        );
+  }
 
   button.secondary {
     background: var(--dc-button-bg, var(--dc-button-secondary-bg, #fff));
@@ -79,6 +92,15 @@ styles.replaceSync(/* css */ `
       var(--dc-button-secondary-border-hover, #d1d5db)
     );
   }
+  button.secondary:focus-visible {
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px
+        var(
+          --dc-button-focus-ring,
+          var(--dc-button-secondary-focus-ring, #6b7280)
+        );
+  }
 
   button.danger {
     background: var(--dc-button-bg, var(--dc-button-danger-bg, #dc2626));
@@ -97,6 +119,15 @@ styles.replaceSync(/* css */ `
       --dc-button-border-hover,
       var(--dc-button-danger-border-hover, #b91c1c)
     );
+  }
+  button.danger:focus-visible {
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px
+        var(
+          --dc-button-focus-ring,
+          var(--dc-button-danger-focus-ring, #b91c1c)
+        );
   }
 `);
 
@@ -122,21 +153,25 @@ const SIZES = ["sm", "md", "lg"];
  * @cssprop [--dc-button-color] - Text color, overrides the variant default for all variants.
  * @cssprop [--dc-button-bg-hover] - Background color on hover, overrides the variant default for all variants.
  * @cssprop [--dc-button-border-hover] - Border color on hover, overrides the variant default for all variants.
+ * @cssprop [--dc-button-focus-ring] - Focus ring color, overrides the variant default for all variants.
  * @cssprop [--dc-button-primary-bg=#2563eb] - Background color for the `primary` variant.
  * @cssprop [--dc-button-primary-border=#2563eb] - Border color for the `primary` variant.
  * @cssprop [--dc-button-primary-color=#fff] - Text color for the `primary` variant.
  * @cssprop [--dc-button-primary-bg-hover=#1d4ed8] - Background color for the `primary` variant on hover.
  * @cssprop [--dc-button-primary-border-hover=#1d4ed8] - Border color for the `primary` variant on hover.
+ * @cssprop [--dc-button-primary-focus-ring=#1d4ed8] - Focus ring color for the `primary` variant.
  * @cssprop [--dc-button-secondary-bg=#fff] - Background color for the `secondary` variant.
  * @cssprop [--dc-button-secondary-border=#d1d5db] - Border color for the `secondary` variant.
  * @cssprop [--dc-button-secondary-color=#111827] - Text color for the `secondary` variant.
  * @cssprop [--dc-button-secondary-bg-hover=#f3f4f6] - Background color for the `secondary` variant on hover.
  * @cssprop [--dc-button-secondary-border-hover=#d1d5db] - Border color for the `secondary` variant on hover.
+ * @cssprop [--dc-button-secondary-focus-ring=#6b7280] - Focus ring color for the `secondary` variant.
  * @cssprop [--dc-button-danger-bg=#dc2626] - Background color for the `danger` variant.
  * @cssprop [--dc-button-danger-border=#dc2626] - Border color for the `danger` variant.
  * @cssprop [--dc-button-danger-color=#fff] - Text color for the `danger` variant.
  * @cssprop [--dc-button-danger-bg-hover=#b91c1c] - Background color for the `danger` variant on hover.
  * @cssprop [--dc-button-danger-border-hover=#b91c1c] - Border color for the `danger` variant on hover.
+ * @cssprop [--dc-button-danger-focus-ring=#b91c1c] - Focus ring color for the `danger` variant.
  */
 export class DcButton extends HTMLElement {
   static get observedAttributes() {
