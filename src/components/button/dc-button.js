@@ -1,3 +1,5 @@
+import { sharedStyles } from "../../styles/shared.js";
+
 const styles = new CSSStyleSheet();
 styles.replaceSync(/* css */ `
   :host {
@@ -5,13 +7,6 @@ styles.replaceSync(/* css */ `
   }
 
   button {
-    font-family:
-      "Inter",
-      -apple-system,
-      "Helvetica Neue",
-      Helvetica,
-      Arial,
-      sans-serif;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1;
@@ -183,7 +178,7 @@ export class DcButton extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [styles];
+    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
       <button>

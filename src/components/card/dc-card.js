@@ -1,3 +1,5 @@
+import { sharedStyles } from "../../styles/shared.js";
+
 const styles = new CSSStyleSheet();
 styles.replaceSync(/* css */ `
   :host {
@@ -5,14 +7,6 @@ styles.replaceSync(/* css */ `
   }
 
   .card {
-    font-family:
-      "Inter",
-      -apple-system,
-      "Helvetica Neue",
-      Helvetica,
-      Arial,
-      sans-serif;
-
     border: 1px solid var(--dc-card-border-color, #e5e7eb);
     border-radius: 10px;
     background: var(--dc-card-bg, #fff);
@@ -62,7 +56,7 @@ export class DcCard extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [styles];
+    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
       <div class="card">

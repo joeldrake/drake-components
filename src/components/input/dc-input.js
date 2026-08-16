@@ -1,4 +1,5 @@
 import "../close-button/dc-close-button.js";
+import { sharedStyles } from "../../styles/shared.js";
 
 const styles = new CSSStyleSheet();
 styles.replaceSync(/* css */ `
@@ -14,13 +15,6 @@ styles.replaceSync(/* css */ `
   }
 
   input {
-    font-family:
-      "Inter",
-      -apple-system,
-      "Helvetica Neue",
-      Helvetica,
-      Arial,
-      sans-serif;
     font-size: 1rem;
     line-height: 1;
     width: 100%;
@@ -123,7 +117,7 @@ export class DcInput extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [styles];
+    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
       <div class="wrapper">

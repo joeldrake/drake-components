@@ -1,15 +1,9 @@
 import "../close-button/dc-close-button.js";
+import { sharedStyles } from "../../styles/shared.js";
 
 const styles = new CSSStyleSheet();
 styles.replaceSync(/* css */ `
   dialog {
-    font-family:
-      "Inter",
-      -apple-system,
-      "Helvetica Neue",
-      Helvetica,
-      Arial,
-      sans-serif;
     padding: 0;
     border: none;
     border-radius: 10px;
@@ -111,7 +105,7 @@ export class DcDialog extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [styles];
+    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
       <dialog
