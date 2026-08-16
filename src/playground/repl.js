@@ -8,6 +8,7 @@ import parserHtml from "prettier/parser-html";
 import parserPostcss from "prettier/parser-postcss";
 import parserBabel from "prettier/parser-babel";
 import "highlight.js/styles/a11y-dark.css";
+import tokensCss from "../styles/tokens.css?raw";
 
 const plugins = [parserHtml, parserPostcss, parserBabel];
 
@@ -243,6 +244,7 @@ export default () => {
 <!doctype html>
     <html>
       <head>
+        <style>${tokensCss}</style>
         ${links.join("\n    ")}
         <style>
           html {
@@ -459,6 +461,19 @@ export default () => {
     localStorage.setItem("repl-code-font-size", fontSize);
   };
 
+  const applyTheme = (theme) => {
+    iframe.contentDocument.documentElement.dataset.theme = theme;
+    themeToggle.textContent =
+      theme === "dark" ? "☀️ Light theme" : "🌙 Dark theme";
+  };
+
+  const toggleTheme = () => {
+    const current = iframe.contentDocument.documentElement.dataset.theme;
+    const next = current === "dark" ? "light" : "dark";
+    localStorage.setItem("repl-theme", next);
+    applyTheme(next);
+  };
+
   /* main div */
   const div = document.createElement("div");
 
@@ -467,6 +482,7 @@ export default () => {
     <div class="toolbar">
       <button disabled id="exampleButton">Insert example</button>
       <button disabled id="prettierButton">Prettify code</button>
+      <button disabled id="themeToggle">🌙 Dark theme</button>
       <div class="iframeWidth"></div>
     </div>
     <div class="repl">
@@ -488,6 +504,7 @@ export default () => {
 
   const exampleButton = div.querySelector("#exampleButton");
   const prettierButton = div.querySelector("#prettierButton");
+  const themeToggle = div.querySelector("#themeToggle");
   const textarea = div.querySelector("#code");
   const iframe = div.querySelector("#output");
   const iframeWidth = div.querySelector(".iframeWidth");
@@ -523,6 +540,7 @@ export default () => {
 
   exampleButton.addEventListener("click", insertExampleAsk);
   prettierButton.addEventListener("click", prettifyCode);
+  themeToggle.addEventListener("click", toggleTheme);
   textarea.addEventListener("input", update);
   textarea.addEventListener("keydown", handleKeydown);
 
@@ -542,6 +560,10 @@ export default () => {
   iframe.addEventListener("load", () => {
     exampleButton.removeAttribute("disabled");
     prettierButton.removeAttribute("disabled");
+    themeToggle.removeAttribute("disabled");
+
+    const savedTheme = localStorage.getItem("repl-theme");
+    applyTheme(savedTheme === "dark" ? "dark" : "light");
 
     const savedREPL = localStorage.getItem("savedREPL");
     if (savedREPL) {
