@@ -35,7 +35,7 @@ npm install
 npm run storybook
 ```
 
-Storybook itself uses Vite as its dev server/builder — that's separate from the components,
+Storybook itself uses Vite as its dev server/builder, separate from the components.
 
 ## License
 
