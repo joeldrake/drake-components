@@ -55,4 +55,4 @@ which ship as plain ES modules with no build step of their own.
 
 ## License
 
-ISC
+MIT

@@ -14,7 +14,7 @@
     "storybook"
   ],
   "author": "Joel Drake",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://drakecomponents.joeldrake.deno.net/",
   "repository": {
     "type": "git",
