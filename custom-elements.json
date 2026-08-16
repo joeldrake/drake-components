@@ -331,102 +331,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/close-button/dc-close-button.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A small round button with an × icon, used to close or clear things.",
-          "name": "DcCloseButton",
-          "cssProperties": [
-            {
-              "description": "Icon color.",
-              "name": "--dc-close-button-color",
-              "default": "#6b7280"
-            },
-            {
-              "description": "Background color on hover.",
-              "name": "--dc-close-button-bg-hover",
-              "default": "#f3f4f6"
-            },
-            {
-              "description": "Icon color on hover.",
-              "name": "--dc-close-button-color-hover",
-              "default": "#111827"
-            },
-            {
-              "description": "Focus ring color.",
-              "name": "--dc-close-button-focus-ring",
-              "default": "#6b7280"
-            },
-            {
-              "description": "Border radius.",
-              "name": "--dc-close-button-radius",
-              "default": "6px"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "#button",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "#render",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[styles]"
-            },
-            {
-              "kind": "field",
-              "name": "innerHTML",
-              "default": "` <button type=\"button\">×</button> `"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "description": "Accessible label for the button.",
-              "default": "\"Close\""
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "dc-close-button",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "DcCloseButton",
-          "declaration": {
-            "name": "DcCloseButton",
-            "module": "src/components/close-button/dc-close-button.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "dc-close-button",
-          "declaration": {
-            "name": "DcCloseButton",
-            "module": "src/components/close-button/dc-close-button.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/dialog/dc-dialog.js",
       "declarations": [
         {
@@ -570,6 +474,102 @@
           "declaration": {
             "name": "DcDialog",
             "module": "src/components/dialog/dc-dialog.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/close-button/dc-close-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A small round button with an × icon, used to close or clear things.",
+          "name": "DcCloseButton",
+          "cssProperties": [
+            {
+              "description": "Icon color.",
+              "name": "--dc-close-button-color",
+              "default": "#6b7280"
+            },
+            {
+              "description": "Background color on hover.",
+              "name": "--dc-close-button-bg-hover",
+              "default": "#f3f4f6"
+            },
+            {
+              "description": "Icon color on hover.",
+              "name": "--dc-close-button-color-hover",
+              "default": "#111827"
+            },
+            {
+              "description": "Focus ring color.",
+              "name": "--dc-close-button-focus-ring",
+              "default": "#6b7280"
+            },
+            {
+              "description": "Border radius.",
+              "name": "--dc-close-button-radius",
+              "default": "6px"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#button",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#render",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "adoptedStyleSheets",
+              "type": {
+                "text": "array"
+              },
+              "default": "[styles]"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <button type=\"button\">×</button> `"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible label for the button.",
+              "default": "\"Close\""
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-close-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcCloseButton",
+          "declaration": {
+            "name": "DcCloseButton",
+            "module": "src/components/close-button/dc-close-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-close-button",
+          "declaration": {
+            "name": "DcCloseButton",
+            "module": "src/components/close-button/dc-close-button.js"
           }
         }
       ]

@@ -1,4 +1,5 @@
 {
+  "window.title": "${dirty}DC ${separator} ${activeEditorMedium}",
   "html.customData": ["./vscode.html-custom-data.json"],
   "css.customData": ["./vscode.css-custom-data.json"]
 }
