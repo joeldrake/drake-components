@@ -7,6 +7,10 @@ styles.replaceSync(/* css */ `
   }
 
   button {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1;
@@ -34,6 +38,7 @@ styles.replaceSync(/* css */ `
     font-size: 0.8125rem;
   }
   button.md {
+    height: 36.5px;
     padding: 0.5rem 1rem;
   }
   button.lg {
