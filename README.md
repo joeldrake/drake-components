@@ -43,6 +43,13 @@ point the `<script>` tag at the component file wherever it's hosted:
 <script type="module" src="./src/components/button/dc-button.js"></script>
 ```
 
+If your project has a bundler (Vite, webpack, esbuild, etc.), you can import it like any
+other package instead:
+
+```js
+import "drake-components"; // or "drake-components/src/components/button/dc-button.js"
+```
+
 ## Development
 
 ```sh
