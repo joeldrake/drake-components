@@ -2,6 +2,8 @@
 
 Vanilla web components with no build step. Shipped as plain ES modules. What you see is what you get.
 
+https://drake-components.joeldrake.deno.net/
+
 ## Install
 
 ```sh
