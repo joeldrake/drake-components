@@ -1,5 +1,6 @@
-const styles = new CSSStyleSheet();
-styles.replaceSync(/* css */ `
+import { createStyleSheet, HTMLElementBase } from "../../styles/shared.js";
+
+const styles = createStyleSheet(/* css */ `
   :host {
     display: inline-flex;
   }
@@ -52,7 +53,7 @@ styles.replaceSync(/* css */ `
  * @cssprop [--dc-close-button-focus-ring=#6b7280] - Focus ring color.
  * @cssprop [--dc-close-button-radius=6px] - Border radius.
  */
-export class DcCloseButton extends HTMLElement {
+export class DcCloseButton extends HTMLElementBase {
   static get observedAttributes() {
     return ["label"];
   }
@@ -86,6 +87,9 @@ export class DcCloseButton extends HTMLElement {
   }
 }
 
-if (!customElements.get("dc-close-button")) {
+if (
+  typeof customElements !== "undefined" &&
+  !customElements.get("dc-close-button")
+) {
   customElements.define("dc-close-button", DcCloseButton);
 }

@@ -1,7 +1,10 @@
-import { sharedStyles } from "../../styles/shared.js";
+import {
+  sharedStyles,
+  createStyleSheet,
+  HTMLElementBase,
+} from "../../styles/shared.js";
 
-const styles = new CSSStyleSheet();
-styles.replaceSync(/* css */ `
+const styles = createStyleSheet(/* css */ `
   :host {
     display: block;
   }
@@ -55,7 +58,7 @@ styles.replaceSync(/* css */ `
  * @cssprop [--dc-card-border-color=#e5e7eb] - Border color for the card and its header/footer dividers.
  * @cssprop [--dc-card-bg=#fff] - Background color of the card.
  */
-export class DcCard extends HTMLElement {
+export class DcCard extends HTMLElementBase {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
@@ -88,6 +91,6 @@ export class DcCard extends HTMLElement {
   }
 }
 
-if (!customElements.get("dc-card")) {
+if (typeof customElements !== "undefined" && !customElements.get("dc-card")) {
   customElements.define("dc-card", DcCard);
 }

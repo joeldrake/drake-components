@@ -1,7 +1,10 @@
-import { sharedStyles } from "../../styles/shared.js";
+import {
+  sharedStyles,
+  createStyleSheet,
+  HTMLElementBase,
+} from "../../styles/shared.js";
 
-const styles = new CSSStyleSheet();
-styles.replaceSync(/* css */ `
+const styles = createStyleSheet(/* css */ `
   :host {
     display: inline-block;
   }
@@ -200,7 +203,7 @@ const SIZES = ["sm", "md", "lg"];
  * @cssprop [--dc-button-danger-border-hover=#b91c1c] - Border color for the `danger` variant on hover.
  * @cssprop [--dc-button-danger-focus-ring=#b91c1c] - Focus ring color for the `danger` variant.
  */
-export class DcButton extends HTMLElement {
+export class DcButton extends HTMLElementBase {
   static get observedAttributes() {
     return ["variant", "size", "disabled"];
   }
@@ -266,6 +269,6 @@ export class DcButton extends HTMLElement {
   }
 }
 
-if (!customElements.get("dc-button")) {
+if (typeof customElements !== "undefined" && !customElements.get("dc-button")) {
   customElements.define("dc-button", DcButton);
 }

@@ -1,8 +1,11 @@
 import "../close-button/dc-close-button.js";
-import { sharedStyles } from "../../styles/shared.js";
+import {
+  sharedStyles,
+  createStyleSheet,
+  HTMLElementBase,
+} from "../../styles/shared.js";
 
-const styles = new CSSStyleSheet();
-styles.replaceSync(/* css */ `
+const styles = createStyleSheet(/* css */ `
   dialog {
     padding: 0;
     border: none;
@@ -120,7 +123,7 @@ styles.replaceSync(/* css */ `
  * @cssprop [--dc-dialog-bg=#fff] - Background color of the dialog.
  * @cssprop [--dc-dialog-backdrop=rgb(0 0 0 / 0.5)] - Background color of the `::backdrop`.
  */
-export class DcDialog extends HTMLElement {
+export class DcDialog extends HTMLElementBase {
   static get observedAttributes() {
     return ["open"];
   }
@@ -246,6 +249,6 @@ export class DcDialog extends HTMLElement {
   }
 }
 
-if (!customElements.get("dc-dialog")) {
+if (typeof customElements !== "undefined" && !customElements.get("dc-dialog")) {
   customElements.define("dc-dialog", DcDialog);
 }

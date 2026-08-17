@@ -1,8 +1,11 @@
 import "../close-button/dc-close-button.js";
-import { sharedStyles } from "../../styles/shared.js";
+import {
+  sharedStyles,
+  createStyleSheet,
+  HTMLElementBase,
+} from "../../styles/shared.js";
 
-const styles = new CSSStyleSheet();
-styles.replaceSync(/* css */ `
+const styles = createStyleSheet(/* css */ `
   :host {
     display: inline-block;
     width: 100%;
@@ -116,7 +119,7 @@ const SIZES = ["sm", "md", "lg"];
  * @cssprop [--dc-input-bg-disabled=#f9fafb] - Background color when disabled.
  * @cssprop [--dc-input-radius=8px] - Border radius.
  */
-export class DcInput extends HTMLElement {
+export class DcInput extends HTMLElementBase {
   static get observedAttributes() {
     return [
       "type",
@@ -264,6 +267,6 @@ export class DcInput extends HTMLElement {
   }
 }
 
-if (!customElements.get("dc-input")) {
+if (typeof customElements !== "undefined" && !customElements.get("dc-input")) {
   customElements.define("dc-input", DcInput);
 }

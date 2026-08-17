@@ -1,8 +1,11 @@
 import "../input/dc-input.js";
-import { sharedStyles } from "../../styles/shared.js";
+import {
+  sharedStyles,
+  createStyleSheet,
+  HTMLElementBase,
+} from "../../styles/shared.js";
 
-const styles = new CSSStyleSheet();
-styles.replaceSync(/* css */ `
+const styles = createStyleSheet(/* css */ `
   :host {
     display: inline-block;
     width: 100%;
@@ -104,7 +107,7 @@ function formatValue(raw) {
  * @fires {CustomEvent} dc-input - Fired with `{ value }` on every value change, mirroring the native `input` event.
  * @fires {CustomEvent} dc-change - Fired with `{ value }` when the change is committed, mirroring the native `change` event.
  */
-export class DcInputPrice extends HTMLElement {
+export class DcInputPrice extends HTMLElementBase {
   static get observedAttributes() {
     return ["size", "placeholder", "name", "value", "disabled"];
   }
@@ -252,6 +255,9 @@ export class DcInputPrice extends HTMLElement {
   }
 }
 
-if (!customElements.get("dc-input-price")) {
+if (
+  typeof customElements !== "undefined" &&
+  !customElements.get("dc-input-price")
+) {
   customElements.define("dc-input-price", DcInputPrice);
 }
