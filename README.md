@@ -63,7 +63,3 @@ Storybook itself uses Vite as its dev server/builder, separate from the componen
 ## License
 
 MIT
-
-```
-
-```
