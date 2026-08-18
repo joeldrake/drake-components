@@ -105,6 +105,23 @@ const styles = /* css */ `
   }
 `;
 
+const html = /* html */ `
+  <dialog role="dialog" aria-modal="true">
+    <div class="content">
+      <dc-close-button class="close"></dc-close-button>
+      <div class="header">
+        <slot name="header"></slot>
+      </div>
+      <div class="main">
+        <slot></slot>
+      </div>
+      <div class="footer">
+        <slot name="footer"></slot>
+      </div>
+    </div>
+  </dialog>
+`;
+
 /**
  * A modal dialog built on the native `<dialog>` element.
  *
@@ -134,24 +151,11 @@ export class DcDialog extends HTMLElement {
 
     const shadow = this.attachShadow({ mode: "open" });
 
-    shadow.innerHTML = /* html */ `
+    shadow.innerHTML = `
       <style>
         ${sharedStyles}${styles}
       </style>
-      <dialog role="dialog" aria-modal="true">
-        <div class="content">
-          <dc-close-button class="close"></dc-close-button>
-          <div class="header">
-            <slot name="header"></slot>
-          </div>
-          <div class="main">
-            <slot></slot>
-          </div>
-          <div class="footer">
-            <slot name="footer"></slot>
-          </div>
-        </div>
-      </dialog>
+      ${html}
     `;
 
     this.#dialog = shadow.querySelector("dialog");

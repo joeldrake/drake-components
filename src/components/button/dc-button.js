@@ -159,6 +159,12 @@ const styles = /* css */ `
   }
 `;
 
+const html = /* html */ `
+  <button>
+    <slot></slot>
+  </button>
+`;
+
 /** @typedef {"primary" | "secondary" | "danger"} DcButtonVariant */
 /** @typedef {"sm" | "md" | "lg"} DcButtonSize */
 
@@ -212,13 +218,11 @@ export class DcButton extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: "open" });
 
-    shadow.innerHTML = /* html */ `
+    shadow.innerHTML = `
       <style>
         ${sharedStyles}${styles}
       </style>
-      <button>
-        <slot></slot>
-      </button>
+      ${html}
     `;
     this.#button = shadow.querySelector("button");
   }

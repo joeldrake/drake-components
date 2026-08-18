@@ -85,6 +85,13 @@ const styles = /* css */ `
   }
 `;
 
+const html = /* html */ `
+  <div class="wrapper">
+    <input part="input" />
+    <dc-close-button class="clear" label="Clear"></dc-close-button>
+  </div>
+`;
+
 /** @typedef {"text" | "email" | "password" | "search" | "tel" | "url" | "number"} DcInputType */
 /** @typedef {"sm" | "md" | "lg"} DcInputSize */
 
@@ -137,14 +144,11 @@ export class DcInput extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: "open" });
 
-    shadow.innerHTML = /* html */ `
+    shadow.innerHTML = `
       <style>
         ${sharedStyles}${styles}
       </style>
-      <div class="wrapper">
-        <input part="input" />
-        <dc-close-button class="clear" label="Clear"></dc-close-button>
-      </div>
+      ${html}
     `;
 
     this.#wrapper = shadow.querySelector(".wrapper");

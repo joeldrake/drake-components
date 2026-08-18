@@ -14,6 +14,11 @@ const styles = /* css */ `
   }
 `;
 
+const html = /* html */ `<dc-input
+    part="input"
+    inputmode="decimal"
+  ></dc-input>`;
+
 const PRICE_FORMATTER = new Intl.NumberFormat("sv-SE", {
   minimumFractionDigits: 2,
   maximumFractionDigits: 2,
@@ -116,10 +121,12 @@ export class DcInputPrice extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: "open" });
 
-    shadow.innerHTML = /* html */ `<style>
+    shadow.innerHTML = `
+      <style>
         ${sharedStyles}${styles}
       </style>
-      <dc-input part="input" inputmode="decimal"></dc-input>`;
+      ${html}
+    `;
 
     this.#input = shadow.querySelector("dc-input");
 

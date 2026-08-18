@@ -41,6 +41,8 @@ const styles = /* css */ `
   }
 `;
 
+const html = /* html */ `<button type="button">×</button>`;
+
 /**
  * A small round button with an × icon, used to close or clear things.
  *
@@ -65,11 +67,11 @@ export class DcCloseButton extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: "open" });
 
-    shadow.innerHTML = /* html */ `
+    shadow.innerHTML = `
       <style>
         ${styles}
       </style>
-      <button type="button">×</button>
+      ${html}
     `;
     this.#button = shadow.querySelector("button");
   }

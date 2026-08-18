@@ -44,6 +44,20 @@ const styles = /* css */ `
   }
 `;
 
+const html = /* html */ `
+  <div class="card">
+    <div class="header is-empty">
+      <slot name="header"></slot>
+    </div>
+    <div class="body">
+      <slot></slot>
+    </div>
+    <div class="footer is-empty">
+      <slot name="footer"></slot>
+    </div>
+  </div>
+`;
+
 /**
  * A container with optional header and footer sections that auto-hide when empty.
  *
@@ -61,21 +75,11 @@ export class DcCard extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: "open" });
 
-    shadow.innerHTML = /* html */ `
+    shadow.innerHTML = `
       <style>
         ${sharedStyles}${styles}
       </style>
-      <div class="card">
-        <div class="header is-empty">
-          <slot name="header"></slot>
-        </div>
-        <div class="body">
-          <slot></slot>
-        </div>
-        <div class="footer is-empty">
-          <slot name="footer"></slot>
-        </div>
-      </div>
+      ${html}
     `;
 
     const header = shadow.querySelector(".header");
