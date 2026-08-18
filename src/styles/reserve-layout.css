@@ -1,0 +1,81 @@
+/**
+ * Optional: reserves layout space for dc-* components before their custom
+ * element modules load and upgrade the DOM (e.g. during SSR/static HTML, or
+ * while the component scripts are still downloading). Until then, an
+ * unregistered element has no shadow DOM and no built-in sizing - it renders
+ * as a plain inline box sized by whatever light-DOM content it has (or 0x0
+ * for content-less components like dc-input), then jumps to its real size
+ * once JS runs. This approximates each component's final box (display type,
+ * padding, border, font metrics) so that jump doesn't happen. It does not
+ * reproduce colors, hover/focus states, or anything else that needs the
+ * component's own JS/shadow DOM - just enough of the box model to prevent
+ * layout shift.
+ *
+ * Load this in <head> (a <link> or inlined <style>, either works) before
+ * first paint. Every rule is scoped with :not(:defined), so it stops
+ * applying the instant a component's `customElements.define()` runs and the
+ * element upgrades - the shadow DOM's own styles take over from the exact
+ * same box, with no visible jump at the handoff.
+ *
+ * Hand-maintained, not generated - if a component's sizing changes, update
+ * the matching rule here too (see AGENTS.md).
+ */
+
+dc-button:not(:defined) {
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.5rem 1rem;
+}
+dc-button:not(:defined)[size="sm"] {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+}
+dc-button:not(:defined):not([size]),
+dc-button:not(:defined)[size="md"] {
+  height: 36.5px;
+}
+dc-button:not(:defined)[size="lg"] {
+  padding: 0.75rem 1.5rem;
+}
+
+dc-card:not(:defined) {
+  display: block;
+}
+
+dc-close-button:not(:defined) {
+  display: inline-flex;
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* Closed is the common initial state; the open shadow <dialog> escapes
+   normal flow into the top layer anyway, so nothing to reserve for it. */
+dc-dialog:not(:defined):not([open]) {
+  display: none;
+}
+
+dc-input:not(:defined),
+dc-input-price:not(:defined) {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.5rem 1rem;
+}
+dc-input:not(:defined)[size="sm"],
+dc-input-price:not(:defined)[size="sm"] {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+}
+dc-input:not(:defined)[size="lg"],
+dc-input-price:not(:defined)[size="lg"] {
+  padding: 0.75rem 1.5rem;
+}

@@ -83,6 +83,21 @@ avoid raising the minimum supported browser version; revisit if that tradeoff ch
 `tokens.css` isn't a custom element, so it has no JSDoc and isn't touched by
 `npm run analyze` — just keep it in sync by hand and run `npx prettier --write .`.
 
+## Pre-upgrade layout reservation (`src/styles/reserve-layout.css`)
+
+[reserve-layout.css](src/styles/reserve-layout.css) is an opt-in stylesheet consumers load in
+`<head>` to reserve each component's box (display, padding, border, font metrics) before its
+custom element upgrades — avoiding layout shift when rendering static/server-rendered HTML.
+See the README's "Reducing layout shift before upgrade" section for the consumer-facing
+explanation.
+
+Every rule is scoped with `:not(:defined)` and keyed off attribute selectors (e.g. `[size=]`)
+rather than JS state, since it only ever applies before the component's own styles exist. It's
+hand-maintained, not generated — **whenever you change a component's `:host` display or a
+size/variant's padding, border, font-size, or explicit height/width, update the matching rule
+here too**, then run `npx prettier --write .`. Content-driven components with no fixed sizing
+(like `dc-card`, beyond `display: block`) don't need box reservation, just the display type.
+
 ## JSDoc + editor type tooling
 
 Every public attribute, slot, event, CSS custom property, and method **must** be
