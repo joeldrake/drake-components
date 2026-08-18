@@ -28,6 +28,13 @@ const debounce = (fn, wait = 250) => {
 
 export default () => {
   const exampleCode = `<style>
+  body {
+    background-color: var(--dc-color-bg);
+  }
+
+  h1 {
+    color: var(--dc-color-text);
+  }
   .main {
     padding: 1rem;
   }
@@ -51,7 +58,7 @@ export default () => {
   <dc-button onclick="this.nextElementSibling.show()"> Open dialog </dc-button>
   <dc-dialog>
     <h2 style="margin: 0" slot="header">Dialog title</h2>
-    <p style="margin: 0; color: #4b5563">
+    <p style="margin: 0">
       A vanilla &lt;dc-dialog&gt; built on the native &lt;dialog&gt; element —
       focus trapping and Escape-to-close come for free.
     </p>

@@ -15,7 +15,7 @@ export const Default = {
       </dc-button>
       <dc-dialog>
         <h2 style="margin: 0;" slot="header">Dialog title</h2>
-        <p style="margin: 0; color: #4b5563;">
+        <p style="margin: 0">
           A vanilla &lt;dc-dialog&gt; built on the native &lt;dialog&gt; element
           — focus trapping and Escape-to-close come for free.
         </p>
