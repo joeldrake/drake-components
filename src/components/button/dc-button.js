@@ -1,8 +1,8 @@
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
 import "../../styles/dom-shim.js";
-import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
+import { sharedStyles } from "../../styles/shared.js";
 
-const styles = createStyleSheet(/* css */ `
+const styles = /* css */ `
   :host {
     display: inline-block;
   }
@@ -157,7 +157,7 @@ const styles = createStyleSheet(/* css */ `
       0 0 0 4px
         var(--dc-button-focus-ring, var(--dc-button-danger-focus-ring, #b91c1c));
   }
-`);
+`;
 
 /** @typedef {"primary" | "secondary" | "danger"} DcButtonVariant */
 /** @typedef {"sm" | "md" | "lg"} DcButtonSize */
@@ -211,9 +211,9 @@ export class DcButton extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
+      <style>${sharedStyles}${styles}</style>
       <button>
         <slot></slot>
       </button>

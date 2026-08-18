@@ -1,9 +1,9 @@
 import "../close-button/dc-close-button.js";
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
 import "../../styles/dom-shim.js";
-import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
+import { sharedStyles } from "../../styles/shared.js";
 
-const styles = createStyleSheet(/* css */ `
+const styles = /* css */ `
   dialog {
     padding: 0;
     border: none;
@@ -103,7 +103,7 @@ const styles = createStyleSheet(/* css */ `
   .footer:empty {
     display: none;
   }
-`);
+`;
 
 /**
  * A modal dialog built on the native `<dialog>` element.
@@ -133,9 +133,9 @@ export class DcDialog extends HTMLElement {
     super();
 
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
+      <style>${sharedStyles}${styles}</style>
       <dialog
         role="dialog"
         aria-modal="true"

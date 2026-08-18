@@ -1,8 +1,7 @@
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
 import "../../styles/dom-shim.js";
-import { createStyleSheet } from "../../styles/shared.js";
 
-const styles = createStyleSheet(/* css */ `
+const styles = /* css */ `
   :host {
     display: inline-flex;
   }
@@ -40,7 +39,7 @@ const styles = createStyleSheet(/* css */ `
       0 0 0 2px #fff,
       0 0 0 4px var(--dc-close-button-focus-ring, #6b7280);
   }
-`);
+`;
 
 /**
  * A small round button with an × icon, used to close or clear things.
@@ -65,9 +64,9 @@ export class DcCloseButton extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [styles];
 
     shadow.innerHTML = /* html */ `
+      <style>${styles}</style>
       <button type="button">×</button>
     `;
     this.#button = shadow.querySelector("button");

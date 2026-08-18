@@ -1,8 +1,8 @@
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
 import "../../styles/dom-shim.js";
-import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
+import { sharedStyles } from "../../styles/shared.js";
 
-const styles = createStyleSheet(/* css */ `
+const styles = /* css */ `
   :host {
     display: block;
   }
@@ -42,7 +42,7 @@ const styles = createStyleSheet(/* css */ `
   .footer.is-empty {
     display: none;
   }
-`);
+`;
 
 /**
  * A container with optional header and footer sections that auto-hide when empty.
@@ -60,9 +60,9 @@ export class DcCard extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
+      <style>${sharedStyles}${styles}</style>
       <div class="card">
         <div class="header is-empty">
           <slot name="header"></slot>

@@ -1,9 +1,9 @@
 import "../close-button/dc-close-button.js";
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
 import "../../styles/dom-shim.js";
-import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
+import { sharedStyles } from "../../styles/shared.js";
 
-const styles = createStyleSheet(/* css */ `
+const styles = /* css */ `
   :host {
     display: inline-block;
     width: 100%;
@@ -83,7 +83,7 @@ const styles = createStyleSheet(/* css */ `
   .wrapper.has-value .clear {
     display: flex;
   }
-`);
+`;
 
 /** @typedef {"text" | "email" | "password" | "search" | "tel" | "url" | "number"} DcInputType */
 /** @typedef {"sm" | "md" | "lg"} DcInputSize */
@@ -136,9 +136,9 @@ export class DcInput extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });
-    shadow.adoptedStyleSheets = [sharedStyles, styles];
 
     shadow.innerHTML = /* html */ `
+      <style>${sharedStyles}${styles}</style>
       <div class="wrapper">
         <input part="input" />
         <dc-close-button class="clear" label="Clear"></dc-close-button>
