@@ -1,6 +1,15 @@
 import "../src/index.js";
 import "../src/styles/tokens.css";
 
+const style = document.createElement("style");
+style.textContent = `
+  body {
+    background-color: var(--dc-color-bg);
+    color: var(--dc-color-text);
+  }
+`;
+document.head.appendChild(style);
+
 /** @type { import('@storybook/web-components-vite').Preview } */
 const preview = {
   parameters: {
