@@ -1,5 +1,5 @@
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
-import "../../styles/dom-shim.js";
+import "../../utils/dom-shim.js";
 
 const styles = /* css */ `
   :host {
