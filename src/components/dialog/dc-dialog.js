@@ -1,9 +1,7 @@
 import "../close-button/dc-close-button.js";
-import {
-  sharedStyles,
-  createStyleSheet,
-  HTMLElementBase,
-} from "../../styles/shared.js";
+// Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
+import "../../styles/dom-shim.js";
+import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
 
 const styles = createStyleSheet(/* css */ `
   dialog {
@@ -123,7 +121,7 @@ const styles = createStyleSheet(/* css */ `
  * @cssprop [--dc-dialog-bg=#fff] - Background color of the dialog.
  * @cssprop [--dc-dialog-backdrop=rgb(0 0 0 / 0.5)] - Background color of the `::backdrop`.
  */
-export class DcDialog extends HTMLElementBase {
+export class DcDialog extends HTMLElement {
   static get observedAttributes() {
     return ["open"];
   }

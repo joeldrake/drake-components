@@ -1,4 +1,6 @@
-import { createStyleSheet, HTMLElementBase } from "../../styles/shared.js";
+// Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
+import "../../styles/dom-shim.js";
+import { createStyleSheet } from "../../styles/shared.js";
 
 const styles = createStyleSheet(/* css */ `
   :host {
@@ -53,7 +55,7 @@ const styles = createStyleSheet(/* css */ `
  * @cssprop [--dc-close-button-focus-ring=#6b7280] - Focus ring color.
  * @cssprop [--dc-close-button-radius=6px] - Border radius.
  */
-export class DcCloseButton extends HTMLElementBase {
+export class DcCloseButton extends HTMLElement {
   static get observedAttributes() {
     return ["label"];
   }

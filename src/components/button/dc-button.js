@@ -1,8 +1,6 @@
-import {
-  sharedStyles,
-  createStyleSheet,
-  HTMLElementBase,
-} from "../../styles/shared.js";
+// Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
+import "../../styles/dom-shim.js";
+import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
 
 const styles = createStyleSheet(/* css */ `
   :host {
@@ -203,7 +201,7 @@ const SIZES = ["sm", "md", "lg"];
  * @cssprop [--dc-button-danger-border-hover=#b91c1c] - Border color for the `danger` variant on hover.
  * @cssprop [--dc-button-danger-focus-ring=#b91c1c] - Focus ring color for the `danger` variant.
  */
-export class DcButton extends HTMLElementBase {
+export class DcButton extends HTMLElement {
   static get observedAttributes() {
     return ["variant", "size", "disabled"];
   }

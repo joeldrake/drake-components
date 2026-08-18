@@ -1,9 +1,7 @@
 import "../close-button/dc-close-button.js";
-import {
-  sharedStyles,
-  createStyleSheet,
-  HTMLElementBase,
-} from "../../styles/shared.js";
+// Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
+import "../../styles/dom-shim.js";
+import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
 
 const styles = createStyleSheet(/* css */ `
   :host {
@@ -119,7 +117,7 @@ const SIZES = ["sm", "md", "lg"];
  * @cssprop [--dc-input-bg-disabled=#f9fafb] - Background color when disabled.
  * @cssprop [--dc-input-radius=8px] - Border radius.
  */
-export class DcInput extends HTMLElementBase {
+export class DcInput extends HTMLElement {
   static get observedAttributes() {
     return [
       "type",

@@ -1,9 +1,7 @@
 import "../input/dc-input.js";
-import {
-  sharedStyles,
-  createStyleSheet,
-  HTMLElementBase,
-} from "../../styles/shared.js";
+// Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
+import "../../styles/dom-shim.js";
+import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
 
 const styles = createStyleSheet(/* css */ `
   :host {
@@ -107,7 +105,7 @@ function formatValue(raw) {
  * @fires {CustomEvent} dc-input - Fired with `{ value }` on every value change, mirroring the native `input` event.
  * @fires {CustomEvent} dc-change - Fired with `{ value }` when the change is committed, mirroring the native `change` event.
  */
-export class DcInputPrice extends HTMLElementBase {
+export class DcInputPrice extends HTMLElement {
   static get observedAttributes() {
     return ["size", "placeholder", "name", "value", "disabled"];
   }

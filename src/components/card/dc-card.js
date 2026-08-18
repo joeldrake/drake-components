@@ -1,8 +1,6 @@
-import {
-  sharedStyles,
-  createStyleSheet,
-  HTMLElementBase,
-} from "../../styles/shared.js";
+// Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
+import "../../styles/dom-shim.js";
+import { sharedStyles, createStyleSheet } from "../../styles/shared.js";
 
 const styles = createStyleSheet(/* css */ `
   :host {
@@ -58,7 +56,7 @@ const styles = createStyleSheet(/* css */ `
  * @cssprop [--dc-card-border-color=#e5e7eb] - Border color for the card and its header/footer dividers.
  * @cssprop [--dc-card-bg=#fff] - Background color of the card.
  */
-export class DcCard extends HTMLElementBase {
+export class DcCard extends HTMLElement {
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: "open" });

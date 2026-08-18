@@ -1,8 +1,8 @@
 /**
- * Constructable stylesheets and custom elements don't exist outside a
- * browser (e.g. during SSR). Importing a dc-* component must not throw in
- * that environment, so stylesheet creation and the HTMLElement base class
- * are guarded and only do real work once actually running in a browser.
+ * Constructable stylesheets don't exist outside a browser (e.g. during SSR).
+ * Importing a dc-* component must not throw in that environment, so
+ * stylesheet creation is guarded and only does real work once actually
+ * running in a browser. See dom-shim.js for the `HTMLElement` equivalent.
  */
 export function createStyleSheet(cssText) {
   if (typeof CSSStyleSheet === "undefined") return undefined;
@@ -10,9 +10,6 @@ export function createStyleSheet(cssText) {
   sheet.replaceSync(cssText);
   return sheet;
 }
-
-export const HTMLElementBase =
-  typeof HTMLElement !== "undefined" ? HTMLElement : class {};
 
 /**
  * Base styles shared across dc-* components. Adopt this alongside a
