@@ -62,7 +62,9 @@ export class DcCard extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
 
     shadow.innerHTML = /* html */ `
-      <style>${sharedStyles}${styles}</style>
+      <style>
+        ${sharedStyles}${styles}
+      </style>
       <div class="card">
         <div class="header is-empty">
           <slot name="header"></slot>

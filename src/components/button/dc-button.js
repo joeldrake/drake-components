@@ -213,7 +213,9 @@ export class DcButton extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
 
     shadow.innerHTML = /* html */ `
-      <style>${sharedStyles}${styles}</style>
+      <style>
+        ${sharedStyles}${styles}
+      </style>
       <button>
         <slot></slot>
       </button>

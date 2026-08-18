@@ -138,7 +138,9 @@ export class DcInput extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
 
     shadow.innerHTML = /* html */ `
-      <style>${sharedStyles}${styles}</style>
+      <style>
+        ${sharedStyles}${styles}
+      </style>
       <div class="wrapper">
         <input part="input" />
         <dc-close-button class="clear" label="Clear"></dc-close-button>

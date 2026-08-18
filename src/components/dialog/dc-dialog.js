@@ -135,11 +135,10 @@ export class DcDialog extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
 
     shadow.innerHTML = /* html */ `
-      <style>${sharedStyles}${styles}</style>
-      <dialog
-        role="dialog"
-        aria-modal="true"
-      >
+      <style>
+        ${sharedStyles}${styles}
+      </style>
+      <dialog role="dialog" aria-modal="true">
         <div class="content">
           <dc-close-button class="close"></dc-close-button>
           <div class="header">

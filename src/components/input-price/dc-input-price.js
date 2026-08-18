@@ -116,7 +116,9 @@ export class DcInputPrice extends HTMLElement {
     super();
     const shadow = this.attachShadow({ mode: "open" });
 
-    shadow.innerHTML = /* html */ `<style>${sharedStyles}${styles}</style>
+    shadow.innerHTML = /* html */ `<style>
+        ${sharedStyles}${styles}
+      </style>
       <dc-input part="input" inputmode="decimal"></dc-input>`;
 
     this.#input = shadow.querySelector("dc-input");

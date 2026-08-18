@@ -66,7 +66,9 @@ export class DcCloseButton extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
 
     shadow.innerHTML = /* html */ `
-      <style>${styles}</style>
+      <style>
+        ${styles}
+      </style>
       <button type="button">×</button>
     `;
     this.#button = shadow.querySelector("button");

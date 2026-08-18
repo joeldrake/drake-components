@@ -244,7 +244,9 @@ export default () => {
 <!doctype html>
     <html>
       <head>
-        <style>${tokensCss}</style>
+        <style>
+          ${tokensCss}
+        </style>
         ${links.join("\n    ")}
         <style>
           html {
