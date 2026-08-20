@@ -248,73 +248,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/card/dc-card.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A container with optional header and footer sections that auto-hide when empty.",
-          "name": "DcCard",
-          "cssProperties": [
-            {
-              "description": "Border color for the card and its header/footer dividers.",
-              "name": "--dc-card-border-color",
-              "default": "#e5e7eb"
-            },
-            {
-              "description": "Background color of the card.",
-              "name": "--dc-card-bg",
-              "default": "#fff"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Main card content.",
-              "name": ""
-            },
-            {
-              "description": "Header content, shown above the main content. Hidden when empty.",
-              "name": "header"
-            },
-            {
-              "description": "Footer content, shown below the main content, right-aligned. Hidden when empty.",
-              "name": "footer"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "innerHTML",
-              "default": "` <style> ${sharedStyles}${styles} </style> ${html} `"
-            }
-          ],
-          "superclass": {
-            "name": "HTMLElement"
-          },
-          "tagName": "dc-card",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "DcCard",
-          "declaration": {
-            "name": "DcCard",
-            "module": "src/components/card/dc-card.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "dc-card",
-          "declaration": {
-            "name": "DcCard",
-            "module": "src/components/card/dc-card.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/close-button/dc-close-button.js",
       "declarations": [
         {
@@ -397,6 +330,73 @@
           "declaration": {
             "name": "DcCloseButton",
             "module": "src/components/close-button/dc-close-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/card/dc-card.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A container with optional header and footer sections that auto-hide when empty.",
+          "name": "DcCard",
+          "cssProperties": [
+            {
+              "description": "Border color for the card and its header/footer dividers.",
+              "name": "--dc-card-border-color",
+              "default": "#e5e7eb"
+            },
+            {
+              "description": "Background color of the card.",
+              "name": "--dc-card-bg",
+              "default": "#fff"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Main card content.",
+              "name": ""
+            },
+            {
+              "description": "Header content, shown above the main content. Hidden when empty.",
+              "name": "header"
+            },
+            {
+              "description": "Footer content, shown below the main content, right-aligned. Hidden when empty.",
+              "name": "footer"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <style> ${sharedStyles}${styles} </style> ${html} `"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcCard",
+          "declaration": {
+            "name": "DcCard",
+            "module": "src/components/card/dc-card.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-card",
+          "declaration": {
+            "name": "DcCard",
+            "module": "src/components/card/dc-card.js"
           }
         }
       ]
@@ -624,7 +624,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "Icon name, matching a lucide icon filename (e.g. \"heart\", \"arrow-right\")."
+              "description": "Icon name, matching a lucide icon filename (e.g. \"heart\", \"arrow-right\"). Browse available names at https://lucide.dev/icons/"
             },
             {
               "name": "size",

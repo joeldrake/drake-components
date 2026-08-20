@@ -58,6 +58,7 @@ const html = /* html */ `<span
  * @element dc-icon
  *
  * @attr {string} name - Icon name, matching a lucide icon filename (e.g. "heart", "arrow-right").
+ * Browse available names at https://lucide.dev/icons/
  * @attr {number} [size=24] - Width/height in pixels. Applied immediately so the icon's box is
  * reserved before the SVG has finished loading, avoiding layout shift.
  *
