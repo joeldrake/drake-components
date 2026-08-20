@@ -33,10 +33,9 @@ Follow the existing components ([dc-button.js](src/components/button/dc-button.j
 [dc-dialog.js](src/components/dialog/dc-dialog.js)) as the reference pattern:
 
 - `class Dc<Name> extends HTMLElement`, shadow DOM via `attachShadow({ mode: "open" })`.
-- Styles as a module-level `CSSStyleSheet` built with `styles.replaceSync(/* css */ \`...\`)`
-  and applied via `shadow.adoptedStyleSheets = [styles]` — not `<style>` tags.
-- Shadow markup built with `shadow.innerHTML = /* html */ \`...\`` in the constructor. Keep
-  the `/* css */` and `/* html */` comments — Prettier (`prettier-plugin-embed`) uses them to
+- Styles as a module-level `CSSStyleSheet` built with `styles.replaceSync(/* css */ \`...\`)`and applied via`shadow.adoptedStyleSheets = [styles]`— not`<style>` tags.
+- Shadow markup built with `shadow.innerHTML = /* html */ \`...\``in the constructor. Keep
+the`/* css _/`and`/_ html */` comments — Prettier (`prettier-plugin-embed`) uses them to
   format the embedded template literals as real CSS/HTML.
 - Reflected attributes: `static get observedAttributes()` lists them, and each gets a
   paired getter/setter on the class (getter reads via `getAttribute`/`hasAttribute` with a
@@ -159,3 +158,7 @@ npx prettier --write .
 
 There is no automated test suite yet — Storybook (with the a11y addon) is the primary way
 to visually and accessibly verify a component. If you add one, document it here.
+
+Don't spin up a headless browser (chromium-cli, Playwright, etc.) to verify changes — User
+already runs Storybook locally and checks components there himself. If Storybook isn't
+running, `npm run storybook` and telling user what to look at is enough.
