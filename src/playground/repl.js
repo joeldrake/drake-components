@@ -30,12 +30,7 @@ export default () => {
   const exampleCode = `<style>
   body {
     background-color: var(--dc-color-bg);
-  }
-
-  h1 {
     color: var(--dc-color-text);
-  }
-  .main {
     padding: 1rem;
   }
 
@@ -47,44 +42,42 @@ export default () => {
   }
 </style>
 
-<div class="main">
-  <h1>Drake Components Playground</h1>
+<h1>Drake Components Playground</h1>
 
-  <div class="inputs">
-    <dc-input id="myInput" placeholder="Type something..."></dc-input>
-    <dc-button id="myButton">Run</dc-button>
+<div class="inputs">
+  <dc-input id="myInput" placeholder="Type something..."></dc-input>
+  <dc-button id="myButton">Run</dc-button>
+</div>
+
+<dc-button onclick="this.nextElementSibling.show()"> Open dialog </dc-button>
+
+<dc-dialog>
+  <h2 style="margin: 0" slot="header">Dialog title</h2>
+  <p style="margin: 0">
+    A vanilla &lt;dc-dialog&gt; built on the native &lt;dialog&gt; element —
+    focus trapping and Escape-to-close come for free.
+  </p>
+  <div slot="footer">
+    <dc-button variant="secondary" onclick="this.closest('dc-dialog').close()">
+      Cancel
+    </dc-button>
+    <dc-button variant="primary" onclick="this.closest('dc-dialog').close()">
+      Confirm
+    </dc-button>
   </div>
+</dc-dialog>
 
-  <dc-button onclick="this.nextElementSibling.show()"> Open dialog </dc-button>
-  <dc-dialog>
-    <h2 style="margin: 0" slot="header">Dialog title</h2>
-    <p style="margin: 0">
-      A vanilla &lt;dc-dialog&gt; built on the native &lt;dialog&gt; element —
-      focus trapping and Escape-to-close come for free.
-    </p>
-    <div slot="footer">
-      <dc-button
-        variant="secondary"
-        onclick="this.closest('dc-dialog').close()"
-      >
-        Cancel
-      </dc-button>
-      <dc-button variant="primary" onclick="this.closest('dc-dialog').close()">
-        Confirm
-      </dc-button>
-    </div>
-  </dc-dialog>
+<dc-icon name="heart"></dc-icon>
 
-  <script>
-    function buttonClick() {
-      alert(myInput.value);
-    }
-    const myInput = document.getElementById("myInput");
-    const myButton = document.getElementById("myButton");
+<script>
+  function buttonClick() {
+    alert(myInput.value);
+  }
+  const myInput = document.getElementById("myInput");
+  const myButton = document.getElementById("myButton");
 
-    myButton.onclick = buttonClick;
-  </script>
-</div>`;
+  myButton.onclick = buttonClick;
+</script>`;
 
   const cssStyle = /* css */ `
     html {
