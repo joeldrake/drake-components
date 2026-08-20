@@ -79,3 +79,12 @@ dc-input:not(:defined)[size="lg"],
 dc-input-price:not(:defined)[size="lg"] {
   padding: 0.75rem 1.5rem;
 }
+
+/* Only covers the default 24px size - `size` is an arbitrary number, not a
+   fixed set of variants like the others above, so non-default sizes will
+   still jump on upgrade. */
+dc-icon:not(:defined) {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+}

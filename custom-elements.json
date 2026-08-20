@@ -190,16 +190,8 @@
             },
             {
               "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[sharedStyles, styles]"
-            },
-            {
-              "kind": "field",
               "name": "innerHTML",
-              "default": "` <button> <slot></slot> </button> `"
+              "default": "` <style> ${sharedStyles}${styles} </style> ${html} `"
             }
           ],
           "attributes": [
@@ -291,16 +283,8 @@
           "members": [
             {
               "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[sharedStyles, styles]"
-            },
-            {
-              "kind": "field",
               "name": "innerHTML",
-              "default": "` <div class=\"card\"> <div class=\"header is-empty\"> <slot name=\"header\"></slot> </div> <div class=\"body\"> <slot></slot> </div> <div class=\"footer is-empty\"> <slot name=\"footer\"></slot> </div> </div> `"
+              "default": "` <style> ${sharedStyles}${styles} </style> ${html} `"
             }
           ],
           "superclass": {
@@ -325,6 +309,94 @@
           "declaration": {
             "name": "DcCard",
             "module": "src/components/card/dc-card.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/close-button/dc-close-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A small round button with an × icon, used to close or clear things.",
+          "name": "DcCloseButton",
+          "cssProperties": [
+            {
+              "description": "Icon color.",
+              "name": "--dc-close-button-color",
+              "default": "#6b7280"
+            },
+            {
+              "description": "Background color on hover.",
+              "name": "--dc-close-button-bg-hover",
+              "default": "#f3f4f6"
+            },
+            {
+              "description": "Icon color on hover.",
+              "name": "--dc-close-button-color-hover",
+              "default": "#111827"
+            },
+            {
+              "description": "Focus ring color.",
+              "name": "--dc-close-button-focus-ring",
+              "default": "#6b7280"
+            },
+            {
+              "description": "Border radius.",
+              "name": "--dc-close-button-radius",
+              "default": "6px"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "#button",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "#render",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "default": "` <style> ${styles} </style> ${html} `"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Accessible label for the button.",
+              "default": "\"Close\""
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dc-close-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DcCloseButton",
+          "declaration": {
+            "name": "DcCloseButton",
+            "module": "src/components/close-button/dc-close-button.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "dc-close-button",
+          "declaration": {
+            "name": "DcCloseButton",
+            "module": "src/components/close-button/dc-close-button.js"
           }
         }
       ]
@@ -421,16 +493,8 @@
             },
             {
               "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[sharedStyles, styles]"
-            },
-            {
-              "kind": "field",
               "name": "innerHTML",
-              "default": "` <dialog role=\"dialog\" aria-modal=\"true\" > <div class=\"content\"> <dc-close-button class=\"close\"></dc-close-button> <div class=\"header\"> <slot name=\"header\"></slot> </div> <div class=\"main\"> <slot></slot> </div> <div class=\"footer\"> <slot name=\"footer\"></slot> </div> </div> </dialog> `"
+              "default": "` <style> ${sharedStyles}${styles} </style> ${html} `"
             }
           ],
           "events": [
@@ -480,96 +544,119 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/close-button/dc-close-button.js",
+      "path": "src/components/icon/dc-icon.js",
       "declarations": [
         {
           "kind": "class",
-          "description": "A small round button with an × icon, used to close or clear things.",
-          "name": "DcCloseButton",
+          "description": "Renders an icon by name as inline SVG, fetched from a CDN (lucide-static)\nso it inherits `currentColor` and can be styled like any other element.",
+          "name": "DcIcon",
           "cssProperties": [
             {
               "description": "Icon color.",
-              "name": "--dc-close-button-color",
-              "default": "#6b7280"
-            },
-            {
-              "description": "Background color on hover.",
-              "name": "--dc-close-button-bg-hover",
-              "default": "#f3f4f6"
-            },
-            {
-              "description": "Icon color on hover.",
-              "name": "--dc-close-button-color-hover",
-              "default": "#111827"
-            },
-            {
-              "description": "Focus ring color.",
-              "name": "--dc-close-button-focus-ring",
-              "default": "#6b7280"
-            },
-            {
-              "description": "Border radius.",
-              "name": "--dc-close-button-radius",
-              "default": "6px"
+              "name": "--dc-icon-color",
+              "default": "inherit"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "#button",
+              "name": "#container",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "#requestId",
+              "privacy": "private",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "parameters": [
+                {
+                  "name": "value",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "#applySize",
               "privacy": "private"
             },
             {
               "kind": "method",
-              "name": "#render",
+              "name": "#load",
               "privacy": "private"
             },
             {
               "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[styles]"
-            },
-            {
-              "kind": "field",
               "name": "innerHTML",
-              "default": "` <button type=\"button\">×</button> `"
+              "default": "` <style> ${styles} </style> ${html} `"
             }
           ],
           "attributes": [
             {
-              "name": "label",
+              "name": "name",
               "type": {
                 "text": "string"
               },
-              "description": "Accessible label for the button.",
-              "default": "\"Close\""
+              "description": "Icon name, matching a lucide icon filename (e.g. \"heart\", \"arrow-right\")."
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "number"
+              },
+              "description": "Width/height in pixels. Applied immediately so the icon's box is reserved before the SVG has finished loading, avoiding layout shift.",
+              "default": "24"
             }
           ],
           "superclass": {
             "name": "HTMLElement"
           },
-          "tagName": "dc-close-button",
+          "tagName": "dc-icon",
           "customElement": true
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "DcCloseButton",
+          "name": "DcIcon",
           "declaration": {
-            "name": "DcCloseButton",
-            "module": "src/components/close-button/dc-close-button.js"
+            "name": "DcIcon",
+            "module": "src/components/icon/dc-icon.js"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "dc-close-button",
+          "name": "dc-icon",
           "declaration": {
-            "name": "DcCloseButton",
-            "module": "src/components/close-button/dc-close-button.js"
+            "name": "DcIcon",
+            "module": "src/components/icon/dc-icon.js"
           }
         }
       ]
@@ -737,16 +824,8 @@
             },
             {
               "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[sharedStyles, styles]"
-            },
-            {
-              "kind": "field",
               "name": "innerHTML",
-              "default": "` <div class=\"wrapper\"> <input part=\"input\" /> <dc-close-button class=\"clear\" label=\"Clear\"></dc-close-button> </div> `"
+              "default": "` <style> ${sharedStyles}${styles} </style> ${html} `"
             }
           ],
           "events": [
@@ -941,16 +1020,8 @@
             },
             {
               "kind": "field",
-              "name": "adoptedStyleSheets",
-              "type": {
-                "text": "array"
-              },
-              "default": "[sharedStyles, styles]"
-            },
-            {
-              "kind": "field",
               "name": "innerHTML",
-              "default": "`<dc-input part=\"input\" inputmode=\"decimal\" ></dc-input>`"
+              "default": "` <style> ${sharedStyles}${styles} </style> ${html} `"
             }
           ],
           "events": [
