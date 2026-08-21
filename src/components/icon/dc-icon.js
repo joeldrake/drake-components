@@ -28,6 +28,31 @@ function fetchIconMarkup(name) {
   return promise;
 }
 
+/**
+ * Warms the shared icon cache so that `<dc-icon>` elements render instantly
+ * once they're connected, instead of showing an empty box while the SVG is
+ * fetched. Call this on app startup with the icon names a view is about to
+ * need (e.g. everything used in the nav or above the fold).
+ *
+ * Invalid names are skipped with a console warning rather than rejecting the
+ * whole batch, so one typo doesn't stop the rest of the set from preloading.
+ *
+ * @param {Iterable<string>} names - Icon names to fetch and cache ahead of use.
+ * @returns {Promise<void>} Resolves once every requested icon has settled
+ * (fetched successfully or failed) - never rejects.
+ */
+export function preloadIcons(names) {
+  return Promise.all(
+    Array.from(names, (name) => {
+      if (!NAME_PATTERN.test(name)) {
+        console.warn(`dc-icon: invalid icon name "${name}"`);
+        return undefined;
+      }
+      return fetchIconMarkup(name).catch((err) => console.error(err));
+    }),
+  ).then(() => undefined);
+}
+
 const styles = /* css */ `
   :host {
     display: inline-flex;

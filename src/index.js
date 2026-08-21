@@ -4,4 +4,4 @@ export { DcCard } from "./components/card/dc-card.js";
 export { DcInput } from "./components/input/dc-input.js";
 export { DcInputPrice } from "./components/input-price/dc-input-price.js";
 export { DcCloseButton } from "./components/close-button/dc-close-button.js";
-export { DcIcon } from "./components/icon/dc-icon.js";
+export { DcIcon, preloadIcons } from "./components/icon/dc-icon.js";
