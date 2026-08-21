@@ -2,7 +2,6 @@ import "../close-button/dc-close-button.js";
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
 import "../../utils/dom-shim.js";
 import { sharedStyles } from "../../styles/shared.js";
-import { attachScopedShadow } from "../../utils/attach-scoped-shadow.js";
 
 const styles = /* css */ `
   dialog {
@@ -151,7 +150,7 @@ export class DcDialog extends HTMLElement {
   constructor() {
     super();
 
-    const shadow = attachScopedShadow(this);
+    const shadow = this.attachShadow({ mode: "open" });
 
     shadow.innerHTML = `
       <style>

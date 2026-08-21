@@ -9,12 +9,8 @@ const DEFAULT_SIZE = 24;
 const NAME_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 
 // Shared across every <dc-icon> instance so the same icon is only ever
-// fetched once per page, no matter how many elements use it. Stashed on
-// globalThis (rather than a module-scoped const) so that separate bundles
-// of this library - e.g. independently built micro-frontends loaded into
-// the same document - still share one cache instead of each fetching and
-// storing their own copy.
-const svgCache = (globalThis.__dcIconSvgCache__ ??= new Map());
+// fetched once per page, no matter how many elements use it.
+const svgCache = new Map();
 
 function fetchIconMarkup(name) {
   if (svgCache.has(name)) return svgCache.get(name);
