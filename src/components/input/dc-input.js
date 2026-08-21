@@ -2,6 +2,7 @@ import "../close-button/dc-close-button.js";
 // Makes `extends HTMLElement` below safe to evaluate outside a browser (SSR).
 import "../../utils/dom-shim.js";
 import { sharedStyles } from "../../styles/shared.js";
+import { attachScopedShadow } from "../../utils/attach-scoped-shadow.js";
 
 const styles = /* css */ `
   :host {
@@ -142,7 +143,7 @@ export class DcInput extends HTMLElement {
 
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: "open" });
+    const shadow = attachScopedShadow(this);
 
     shadow.innerHTML = `
       <style>
